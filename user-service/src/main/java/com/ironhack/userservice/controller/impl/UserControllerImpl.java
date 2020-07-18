@@ -1,7 +1,7 @@
 package com.ironhack.userservice.controller.impl;
 
 import com.ironhack.userservice.controller.UserController;
-import com.ironhack.userservice.model.User;
+import com.ironhack.userservice.model.classes.User;
 import com.ironhack.userservice.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;

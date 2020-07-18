@@ -1,4 +1,6 @@
-package com.ironhack.userservice.model;
+package com.ironhack.userservice.model.classes;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
 import java.util.HashSet;
@@ -8,17 +10,29 @@ import java.util.Set;
 @Table(name = "users")
 public class User {
     /**
-     * Attributes
+     * User's id
      */
     @Id
     @GeneratedValue(strategy= GenerationType.IDENTITY)
     private Long id;
+    /**
+     * User's username
+     */
     @Column(unique = true)
     private String username;
+    /**
+     * User's password
+     */
     private String password;
-
+    /**
+     * User's role
+     */
     @OneToMany(fetch= FetchType.EAGER, cascade= CascadeType.ALL, mappedBy="user")
     private Set<Role> roles = new HashSet<>();
+    /**
+     * User's account_id
+     */
+    private Long account_id;
 
     /**
      * Default Constructor
@@ -95,10 +109,25 @@ public class User {
 
     /**
      * This method sets User's roles
-     * @param roles a Rolse element
+     * @param roles a Role's element
      */
     public void setRoles(Set<Role> roles) {
         this.roles = roles;
+    }
+
+    /**
+     * This method gets User's roles
+     * @return a Role's set
+     */
+    public Long getAccount_id() {
+        return account_id;
+    }
+    /**
+     * This method sets User's account id
+     * @param account_id a Role's account id
+     */
+    public void setAccount_id(Long account_id) {
+        this.account_id = account_id;
     }
 
     /**

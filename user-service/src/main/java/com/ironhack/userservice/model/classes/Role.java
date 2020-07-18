@@ -1,4 +1,4 @@
-package com.ironhack.userservice.model;
+package com.ironhack.userservice.model.classes;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
@@ -8,13 +8,19 @@ import javax.persistence.*;
 @Table(name="role")
 public class Role {
     /**
-     * Attributes
+     * Role's id
      */
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    /**
+     * Role's Role
+     */
     private String role;
 
+    /**
+     * Role's user
+     */
     @ManyToOne
     @JsonIgnore
     private User user;

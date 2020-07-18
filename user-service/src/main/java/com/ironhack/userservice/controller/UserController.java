@@ -1,6 +1,6 @@
 package com.ironhack.userservice.controller;
 
-import com.ironhack.userservice.model.User;
+import com.ironhack.userservice.model.classes.User;
 
 import java.util.List;
 

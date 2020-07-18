@@ -1,6 +1,6 @@
 package com.ironhack.userservice.repository;
 
-import com.ironhack.userservice.model.User;
+import com.ironhack.userservice.model.classes.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

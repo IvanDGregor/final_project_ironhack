@@ -1,7 +1,7 @@
 package com.ironhack.userservice.service;
 
 import com.ironhack.userservice.exceptions.NoSuchUserException;
-import com.ironhack.userservice.model.User;
+import com.ironhack.userservice.model.classes.User;
 import com.ironhack.userservice.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

@@ -35,6 +35,11 @@ public class Account {
     private String secret_key;
 
     /**
+     * Account's User id associated
+     */
+    private Integer user_id;
+
+    /**
      * Void Constructor
      */
     public Account(){}
@@ -42,9 +47,15 @@ public class Account {
     /**
      * Constructor
      * @param secret_key Receives the Account's secret key
+     * @param balance Receives the Account's balance
+     * @param user_id Receives the Account's user id associated to account
+     * Status set ACTIVE for default
      */
-    public Account(String secret_key) {
+    public Account(String secret_key, BigDecimal balance, Integer user_id) {
         this.secret_key = secret_key;
+        this.user_id = user_id;
+        this.balance = balance;
+        this.status = Status.ACTIVE;
     }
 
     /**
@@ -57,7 +68,7 @@ public class Account {
 
     /**
      * Setter of Account's Id
-     * @param id Receives a Account 's Id
+     * @param id Receives a Account's Id
      */
     public void setId(Integer id) {
         this.id = id;
@@ -75,7 +86,7 @@ public class Account {
      * Setter of Account's balance
      * @param balance Receives a Account's balance
      */
-    public void setSBalance(BigDecimal balance) {
+    public void setBalance(BigDecimal balance) {
         this.balance = balance;
     }
 
@@ -106,5 +117,19 @@ public class Account {
      */
     public void setSecret_key(String secret_key) {
         this.secret_key = secret_key;
+    }
+    /**
+     * Getter of Account's user id
+     * @return Returns the Account's user id
+     */
+    public Integer getUser_id() {
+        return user_id;
+    }
+    /**
+     * Setter of Account's user id
+     * @param user_id Receives a Account's user id
+     */
+    public void setUser_id(Integer user_id) {
+        this.user_id = user_id;
     }
 }

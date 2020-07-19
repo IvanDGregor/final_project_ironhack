@@ -3,6 +3,7 @@ package com.ironhack.userservice.model.classes;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
+import java.time.LocalDateTime;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -14,7 +15,7 @@ public class User {
      */
     @Id
     @GeneratedValue(strategy= GenerationType.IDENTITY)
-    private Long id;
+    private Integer id;
     /**
      * User's username
      */
@@ -33,6 +34,14 @@ public class User {
      * User's account_id
      */
     private Long account_id;
+    /**
+     * User's Date birth
+     */
+    private LocalDateTime date_birth;
+    /**
+     * User's surname
+     */
+    private String surname;
 
     /**
      * Default Constructor
@@ -43,10 +52,14 @@ public class User {
      * Constructor Class
      * @param username a String value
      * @param password a String value
+     * @param surname a String value
+     * @param date_birth a LocalDateTime
      */
-    public User(String username, String password) {
+    public User(String username, String password, String surname,LocalDateTime date_birth) {
         this.username = username;
         this.password = password;
+        this.surname = surname;
+        this.date_birth = date_birth;
     }
 
     // Getters & Setters
@@ -55,7 +68,7 @@ public class User {
      * This method gets User's id
      * @return id (Long)
      */
-    public Long getId() {
+    public Integer getId() {
         return id;
     }
 
@@ -63,7 +76,7 @@ public class User {
      * This method sets User's id
      * @param id a long value
      */
-    public void setId(Long id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
@@ -128,6 +141,34 @@ public class User {
      */
     public void setAccount_id(Long account_id) {
         this.account_id = account_id;
+    }
+    /**
+     * This method gets User's date birth
+     * @return a Role's set
+     */
+    public LocalDateTime getDate_birth() {
+        return date_birth;
+    }
+    /**
+     * This method sets User's date birth
+     * @param date_birth a User's date birth
+     */
+    public void setDate_birth(LocalDateTime date_birth) {
+        this.date_birth = date_birth;
+    }
+    /**
+     * This method gets User's surname
+     * @return a Surname User's set
+     */
+    public String getSurname() {
+        return surname;
+    }
+    /**
+     * This method sets User's surname
+     * @param surname a User's surname
+     */
+    public void setSurname(String surname) {
+        this.surname = surname;
     }
 
     /**

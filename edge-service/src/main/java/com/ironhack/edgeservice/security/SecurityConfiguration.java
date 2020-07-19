@@ -57,23 +57,16 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
         httpSecurity.httpBasic();
 
         httpSecurity.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS).and().authorizeRequests()
-                // --- SALESREP CONTROLLER SECURITY ---
-                // region --- BASIC QUERYS ---
-                .mvcMatchers("/SalesReps").hasAuthority("ROLE_SALESREP")
-                .mvcMatchers("/SalesRep/byId").hasAuthority("ROLE_SALESREP")
-                .mvcMatchers(HttpMethod.POST,"/SalesRep/Create").hasAuthority("ROLE_ADMIN")
-                .mvcMatchers(HttpMethod.PUT,"/SalesRep/Update").hasAuthority("ROLE_ADMIN")
-                .mvcMatchers(HttpMethod.PATCH,"/SalesRep/UpdateName").hasAuthority("ROLE_ADMIN")
-                .mvcMatchers(HttpMethod.DELETE,"/SalesRep/Delete").hasAuthority("ROLE_ADMIN")
+                // --- USER CONTOLLER SECURITY
                 .mvcMatchers(HttpMethod.GET,"/users").hasAuthority("ROLE_ADMIN")
+                // --- ACCOUNT CONTROLLER SECURITY ---
+                .mvcMatchers("/account/*").hasAuthority("ROLE_ADMIN")
+                .mvcMatchers(HttpMethod.POST,"/account/*").hasAuthority("ROLE_ADMIN")
+                .mvcMatchers(HttpMethod.PUT,"/account/*").hasAuthority("ROLE_ADMIN")
+                .mvcMatchers(HttpMethod.PATCH,"/account/*").hasAuthority("ROLE_ADMIN")
+                .mvcMatchers(HttpMethod.DELETE,"/account/*").hasAuthority("ROLE_ADMIN")
+                .mvcMatchers(HttpMethod.GET,"/accounts").hasAuthority("ROLE_ADMIN")
                 // endregion
-
-                // region Routes findBy
-                .mvcMatchers("/SalesRep/byName").hasAuthority("ROLE_SALESREP")
-                .mvcMatchers("/SalesRep/byPhoneNumber").hasAuthority("ROLE_SALESREP")
-                .mvcMatchers("/SalesRep/byEmail").hasAuthority("ROLE_SALESREP")
-                // endregion
-
 
                 // --- CONTACT CONTROLLER SECURITY ---
                 // region --- BASIC QUERYS ---

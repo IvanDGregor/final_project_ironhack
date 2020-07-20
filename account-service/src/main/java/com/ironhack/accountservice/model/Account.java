@@ -1,6 +1,5 @@
 package com.ironhack.accountservice.model;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.ironhack.accountservice.model.enums.Status;
 import org.hibernate.annotations.DynamicUpdate;
 
@@ -27,7 +26,7 @@ public class Account {
      * Account's Status
      */
     @Enumerated(EnumType.STRING)
-    private Status status;
+    private Status status = Status.ACTIVE;
 
     /**
      * Account's Secret key
@@ -55,7 +54,7 @@ public class Account {
         this.secret_key = secret_key;
         this.user_id = user_id;
         this.balance = balance;
-        this.status = Status.ACTIVE;
+        setStatus(Status.ACTIVE);
     }
 
     /**

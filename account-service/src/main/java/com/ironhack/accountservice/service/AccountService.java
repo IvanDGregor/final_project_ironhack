@@ -46,21 +46,21 @@ public class AccountService {
      * @param account a account element to update a exist account
      * @throws DataNotFoundException if there isn't a user whose id attribute doesn't match with id param
      */
-    public void updateAccountById(Integer id, Account account) throws DataNotFoundException {
+    public Account updateAccount(Integer id, Account account) throws DataNotFoundException {
         Account accountFound = accountRepository.findById(id).orElseThrow(() -> new DataNotFoundException("Could not find that User."));
-        accountFound.setId(id);
-        accountFound.setBalance(accountFound.getBalance());
-        accountFound.setSecret_key(accountFound.getSecret_key());
-        accountFound.setStatus(accountFound.getStatus());
-        accountFound.setUser_id(accountFound.getUser_id());
-        accountRepository.save(accountFound);
+        //accountFound.setId(id);
+        accountFound.setBalance(account.getBalance());
+        accountFound.setSecret_key(account.getSecret_key());
+        accountFound.setStatus(account.getStatus());
+        accountFound.setUser_id(account.getUser_id());
+        return accountRepository.save(accountFound);
     }
     /**
      * This method found a match between a Account's id and param id then these user will be deleted.
      * @param id a integer value to find a exist Account
      * @throws DataNotFoundException if there isn't a Account whose id attribute doesn't match with id param
      */
-    public void deleteAccountById(Integer id) throws DataNotFoundException {
+    public void deleteAccount(Integer id) throws DataNotFoundException {
         Account accountFound = accountRepository.findById(id).orElseThrow(() -> new DataNotFoundException("Could not find that account."));
         accountFound.setBalance(null);
         accountFound.setSecret_key(null);

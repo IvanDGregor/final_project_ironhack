@@ -19,7 +19,7 @@ public class AccountControllerImpl implements AccountControllerInterface {
      * @return Returns a list of all Accounts.
      */
     @GetMapping("/accounts")
-    @Override
+    @ResponseStatus(HttpStatus.OK)
     public List<Account> findAll() {
         return accountService.findAll();
     }
@@ -30,7 +30,7 @@ public class AccountControllerImpl implements AccountControllerInterface {
      * @throws AccountNotFoundException a Exception
      */
     @GetMapping("/account/{account_id}")
-    @Override
+    @ResponseStatus(HttpStatus.OK)
     public Account findById(@PathVariable(name = "account_id") Integer account_id) {
         return accountService.findById(account_id);
     }
@@ -53,8 +53,8 @@ public class AccountControllerImpl implements AccountControllerInterface {
      */
     @PutMapping("/account/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    public void updateAccountById(@PathVariable Integer id, @RequestBody Account account){
-        accountService.updateAccountById(id, account);
+    public Account updateAccount(@PathVariable Integer id, @RequestBody Account account){
+        return accountService.updateAccount(id, account);
     }
 
     /**
@@ -63,7 +63,7 @@ public class AccountControllerImpl implements AccountControllerInterface {
      */
     @DeleteMapping("/account/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    public void deleteAccountById(@PathVariable Integer id) {
-        accountService.deleteAccountById(id);
+    public void deleteAccount(@PathVariable Integer id) {
+        accountService.deleteAccount(id);
     }
 }

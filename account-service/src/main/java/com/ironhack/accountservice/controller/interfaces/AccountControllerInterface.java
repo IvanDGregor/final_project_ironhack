@@ -9,6 +9,6 @@ public interface AccountControllerInterface {
     public List<Account> findAll();
     public Account findById(Integer account_id);
     public Account createAccount(Account account);
-    public void updateAccountById(Integer id, Account account);
-    public void deleteAccountById(Integer id);
+    public Account updateAccount(Integer id, Account account);
+    public void deleteAccount(Integer id);
 }

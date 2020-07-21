@@ -1,5 +1,6 @@
 package com.ironhack.edgeservice.model.classes;
 
+import java.time.LocalDateTime;
 import java.util.HashSet;
 import java.util.Objects;
 import java.util.Set;
@@ -8,8 +9,10 @@ public class User {
     /**
      * Attributes
      */
-    private Long id;
+    private String userId;
     private String username;
+    private String surname;
+    private LocalDateTime date_birth;
     private String password;
     private Set<Role> roles = new HashSet<>();
 
@@ -20,30 +23,35 @@ public class User {
 
     /**
      * Constructor Class
+     * @param userId a String value
      * @param username a String value
      * @param password a String value
+     * @param surname a String value
+     * @param date_birth a LocalDateTime value
      */
-    public User(String username, String password) {
+    public User(String userId, String username, String password, String surname, LocalDateTime date_birth) {
+        this.userId = userId;
         this.username = username;
+        this.surname = surname;
+        this.date_birth = date_birth;
         this.password = password;
     }
-
     // Getters & Setters
 
     /**
      * This method gets User's id
      * @return id (Long)
      */
-    public Long getId() {
-        return id;
+    public String getUserId() {
+        return userId;
     }
 
     /**
      * This method sets User's id
-     * @param id a long value
+     * @param userId a long value
      */
-    public void setId(Long id) {
-        this.id = id;
+    public void setUserId(String userId) {
+        this.userId = userId;
     }
 
     /**
@@ -94,6 +102,22 @@ public class User {
         this.roles = roles;
     }
 
+    public String getSurname() {
+        return surname;
+    }
+
+    public void setSurname(String surname) {
+        this.surname = surname;
+    }
+
+    public LocalDateTime getDate_birth() {
+        return date_birth;
+    }
+
+    public void setDate_birth(LocalDateTime date_birth) {
+        this.date_birth = date_birth;
+    }
+
     /**
      * This method prints user with his properties
      *  @return A customize String format.
@@ -101,7 +125,7 @@ public class User {
     @Override
     public String toString() {
         return "User{" +
-                "id=" + id +
+                "id=" + userId +
                 ", username='" + username + '\'' +
                 ", password='" + password + '\'' +
                 ", authorities=" + roles +
@@ -113,7 +137,7 @@ public class User {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         User user = (User) o;
-        return Objects.equals(id, user.id) &&
+        return Objects.equals(userId, user.userId) &&
                 Objects.equals(username, user.username) &&
                 Objects.equals(password, user.password) &&
                 Objects.equals(roles, user.roles);

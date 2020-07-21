@@ -16,8 +16,7 @@ public class CreditCard {
      * Credit Card's Id
      */
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
+    private String id;
     /**
      * Credit Card's Status
      */
@@ -30,7 +29,7 @@ public class CreditCard {
     /**
      * Credit Card's user_id
      */
-    private Integer user_id;
+    private String user_id;
 
     /**
      * Void Constructor
@@ -43,7 +42,7 @@ public class CreditCard {
      * @param user_id Receives the Credit Card's user id associated to credit card
      * Status set ACTIVE for default
      */
-    public CreditCard(String pin, Integer user_id) {
+    public CreditCard(String pin, String user_id) {
         this.pin = pin;
         this.user_id = user_id;
         this.status = Status.ACTIVE;
@@ -52,14 +51,14 @@ public class CreditCard {
      * Getter of Credit Card's Id
      * @return Returns the Credit Card's Id
      */
-    public Integer getId() {
+    public String getId() {
         return id;
     }
     /**
      * Setter of Credit Card's Id
      * @param id Receives a Credit Card's Id
      */
-    public void setId(Integer id) {
+    public void setId(String id) {
         this.id = id;
     }
     /**
@@ -94,14 +93,14 @@ public class CreditCard {
      * Getter of Credit Card's user id
      * @return Returns the Credit Card's user id
      */
-    public Integer getUser_id() {
+    public String getUser_id() {
         return user_id;
     }
     /**
      * Setter of Credit Card's user id
      * @param user_id Receives a Credit Card's user id
      */
-    public void setUser_id(Integer user_id) {
+    public void setUser_id(String user_id) {
         this.user_id = user_id;
     }
 }

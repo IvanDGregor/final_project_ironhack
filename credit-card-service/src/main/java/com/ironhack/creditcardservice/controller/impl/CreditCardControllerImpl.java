@@ -18,7 +18,7 @@ public class CreditCardControllerImpl implements CreditCardControllerInterface {
      * Finds a List of Credit cards
      * @return Returns a list of all Credit cards.
      */
-    @GetMapping("/credits-cards")
+    @GetMapping("/credit-cards")
     @Override
     public List<CreditCard> findAll() {
         return creditCardService.findAll();
@@ -30,7 +30,7 @@ public class CreditCardControllerImpl implements CreditCardControllerInterface {
      */
     @GetMapping("/credit-card/{credit_card_id}")
     @Override
-    public CreditCard findById(@PathVariable(name = "credit_card_id") Integer credit_card_id) {
+    public CreditCard findById(@PathVariable(name = "credit_card_id") String credit_card_id) {
         return creditCardService.findById(credit_card_id);
     }
 
@@ -52,7 +52,7 @@ public class CreditCardControllerImpl implements CreditCardControllerInterface {
      */
     @PutMapping("/credit-card/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    public void updateCreditCardById(@PathVariable Integer id, @RequestBody CreditCard creditCard){
+    public void updateCreditCardById(@PathVariable String id, @RequestBody CreditCard creditCard){
         creditCardService.updateCreditCardById(id, creditCard);
     }
 
@@ -62,7 +62,7 @@ public class CreditCardControllerImpl implements CreditCardControllerInterface {
      */
     @DeleteMapping("/credit-card/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    public void deleteCreditCardById(@PathVariable Integer id) {
+    public void deleteCreditCardById(@PathVariable String id) {
         creditCardService.deleteCreditCardById(id);
     }
 

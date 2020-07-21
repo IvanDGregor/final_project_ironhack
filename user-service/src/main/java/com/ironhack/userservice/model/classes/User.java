@@ -1,7 +1,5 @@
 package com.ironhack.userservice.model.classes;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-
 import javax.persistence.*;
 import java.time.LocalDateTime;
 import java.util.HashSet;
@@ -14,12 +12,10 @@ public class User {
      * User's id
      */
     @Id
-    @GeneratedValue(strategy= GenerationType.IDENTITY)
-    private Integer id;
+    private String userId;
     /**
      * User's username
      */
-    @Column(unique = true)
     private String username;
     /**
      * User's password
@@ -28,12 +24,8 @@ public class User {
     /**
      * User's role
      */
-    @OneToMany(fetch= FetchType.EAGER, cascade= CascadeType.ALL, mappedBy="user")
+    @OneToMany(fetch= FetchType.EAGER, cascade= CascadeType.ALL, mappedBy="userRole")
     private Set<Role> roles = new HashSet<>();
-    /**
-     * User's account_id
-     */
-    private Long account_id;
     /**
      * User's Date birth
      */
@@ -55,7 +47,8 @@ public class User {
      * @param surname a String value
      * @param date_birth a LocalDateTime
      */
-    public User(String username, String password, String surname,LocalDateTime date_birth) {
+    public User(String userId, String username, String password, String surname, LocalDateTime date_birth) {
+        this.userId = userId;
         this.username = username;
         this.password = password;
         this.surname = surname;
@@ -66,18 +59,18 @@ public class User {
 
     /**
      * This method gets User's id
-     * @return id (Long)
+     * @return id (String)
      */
-    public Integer getId() {
-        return id;
+    public String getUserId() {
+        return userId;
     }
 
     /**
      * This method sets User's id
      * @param id a long value
      */
-    public void setId(Integer id) {
-        this.id = id;
+    public void setUserId(String id) {
+        this.userId = id;
     }
 
     /**
@@ -121,6 +114,14 @@ public class User {
     }
 
     /**
+     * This method gets User's roles
+     * @return a Role's set
+     */
+    public Set<Role> getRole() {
+        return roles;
+    }
+
+    /**
      * This method sets User's roles
      * @param roles a Role's element
      */
@@ -128,20 +129,6 @@ public class User {
         this.roles = roles;
     }
 
-    /**
-     * This method gets User's roles
-     * @return a Role's set
-     */
-    public Long getAccount_id() {
-        return account_id;
-    }
-    /**
-     * This method sets User's account id
-     * @param account_id a Role's account id
-     */
-    public void setAccount_id(Long account_id) {
-        this.account_id = account_id;
-    }
     /**
      * This method gets User's date birth
      * @return a Role's set
@@ -178,7 +165,7 @@ public class User {
     @Override
     public String toString() {
         return "User{" +
-                "id=" + id +
+                "id=" + userId +
                 ", username='" + username + '\'' +
                 ", password='" + password + '\'' +
                 ", authorities=" + roles +

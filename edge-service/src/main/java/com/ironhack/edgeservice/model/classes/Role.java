@@ -54,7 +54,6 @@ public class Role {
     public void setRole(String role) {
         this.role = role;
     }
-
     /**
      * This method generate a string with a customize format.
      * @return a String value

@@ -16,11 +16,11 @@ public class CreditCardService {
 
     /**
      * This method get a Credit Card whose id attribute
-     * @param credit_card_id a Integer value
+     * @param credit_card_id a String value
      * @return A credit card which was found
      * @throws CreditCardNotFoundException if there isn't any Credit card whose account id doesn't matches credit_card_id param
      */
-    public CreditCard findById(Integer credit_card_id) throws CreditCardNotFoundException{
+    public CreditCard findById(String credit_card_id) throws CreditCardNotFoundException{
         return creditCardRepository.findById(credit_card_id).orElseThrow(() -> new CreditCardNotFoundException("There's no credit card with provided id"));
     }
     /**
@@ -46,9 +46,8 @@ public class CreditCardService {
      * @param creditCard a account element to update a exist account
      * @throws DataNotFoundException if there isn't a user whose id attribute doesn't match with id param
      */
-    public void updateCreditCardById(Integer id, CreditCard creditCard) throws DataNotFoundException {
+    public void updateCreditCardById(String id, CreditCard creditCard) throws DataNotFoundException {
         CreditCard creditCardFound = creditCardRepository.findById(id).orElseThrow(() -> new DataNotFoundException("Could not find that Credit Card."));
-        creditCardFound.setId(id);
         creditCardFound.setStatus(creditCard.getStatus());
         creditCardFound.setPin(creditCard.getPin());
         creditCardFound.setUser_id(creditCard.getUser_id());
@@ -59,7 +58,7 @@ public class CreditCardService {
      * @param id a integer value to find a exist Account
      * @throws DataNotFoundException if there isn't a Account whose id attribute doesn't match with id param
      */
-    public void deleteCreditCardById(Integer id) throws DataNotFoundException {
+    public void deleteCreditCardById(String id) throws DataNotFoundException {
         CreditCard creditCardFound = creditCardRepository.findById(id).orElseThrow(() -> new DataNotFoundException("Could not find that credit card."));
         creditCardFound.setPin(null);
         creditCardFound.setUser_id(null);

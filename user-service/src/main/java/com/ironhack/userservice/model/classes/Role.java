@@ -21,9 +21,10 @@ public class Role {
     /**
      * Role's user
      */
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "user_id")
     @JsonIgnore
-    private User user;
+    private User userRole;
 
     /**
      * Default Constructor
@@ -34,8 +35,9 @@ public class Role {
      * Constructor
      * @param role A String value
      */
-    public Role(String role) {
+    public Role(String role, User user) {
         this.role = role;
+        this.userRole = user;
     }
 
     /**Getters & Setters**/
@@ -76,16 +78,16 @@ public class Role {
      * This method gets Role's user
      * @return a User element
      */
-    public User getUser() {
-        return user;
+    public User getUserRole() {
+        return userRole;
     }
 
     /**
      * This method sets Role's user
      * @param user a User element
      */
-    public void setUser(User user) {
-        this.user = user;
+    public void setUserRole(User user) {
+        this.userRole = user;
     }
 
     /**
@@ -96,6 +98,7 @@ public class Role {
     public String toString() {
         return "Role{" +
                 "id=" + id +
-                ", authority='" + role + '\'';
+                ", authority='" + role + "}"+ '\'';
     }
+
 }

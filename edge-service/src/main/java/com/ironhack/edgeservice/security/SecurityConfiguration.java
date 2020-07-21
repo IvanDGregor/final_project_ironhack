@@ -58,6 +58,11 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 
         httpSecurity.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS).and().authorizeRequests()
                 // --- USER CONTOLLER SECURITY
+                .mvcMatchers("/user/*").hasAuthority("ROLE_ADMIN")
+                .mvcMatchers(HttpMethod.POST,"/user/*").hasAuthority("ROLE_ADMIN")
+                .mvcMatchers(HttpMethod.PUT,"/user/*").hasAuthority("ROLE_ADMIN")
+                .mvcMatchers(HttpMethod.PATCH,"/user/*").hasAuthority("ROLE_ADMIN")
+                .mvcMatchers(HttpMethod.DELETE,"/user/*").hasAuthority("ROLE_ADMIN")
                 .mvcMatchers(HttpMethod.GET,"/users").hasAuthority("ROLE_ADMIN")
                 // --- ACCOUNT CONTROLLER SECURITY ---
                 .mvcMatchers("/account/*").hasAuthority("ROLE_ADMIN")
@@ -68,20 +73,14 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .mvcMatchers(HttpMethod.GET,"/accounts").hasAuthority("ROLE_ADMIN")
                 // endregion
 
-                // --- CONTACT CONTROLLER SECURITY ---
-                // region --- BASIC QUERYS ---
-                .mvcMatchers("/contacts").hasAuthority("ROLE_SALESREP")
-                .mvcMatchers("/contact").hasAuthority("ROLE_SALESREP")
-                .mvcMatchers("/contact/byInformationContactName").hasAuthority("ROLE_SALESREP")
-                .mvcMatchers("/contact/byInformationContactPhone").hasAuthority("ROLE_SALESREP")
-                .mvcMatchers("/contact/byInformationContactEmail").hasAuthority("ROLE_SALESREP")
-                .mvcMatchers(HttpMethod.POST,"/contact").hasAuthority("ROLE_SALESREP")
-                .mvcMatchers(HttpMethod.PUT,"/contact/update/{idRequest}").hasAuthority("ROLE_SALESREP")
-                .mvcMatchers(HttpMethod.PATCH,"/contact/update/{idRequest}").hasAuthority("ROLE_SALESREP")
-                .mvcMatchers(HttpMethod.PATCH,"/contact/update/name/{idRequest}").hasAuthority("ROLE_SALESREP")
-                .mvcMatchers(HttpMethod.PATCH,"/contact/update/phone/{idRequest}").hasAuthority("ROLE_SALESREP")
-                .mvcMatchers(HttpMethod.PATCH,"/contact/update/email/{idRequest}").hasAuthority("ROLE_SALESREP")
-                .mvcMatchers(HttpMethod.DELETE,"/contact").hasAuthority("ROLE_SALESREP")
+                // --- CREDIT CARD CONTROLLER SECURITY ---
+                // region
+                .mvcMatchers("/credit-card/*").hasAuthority("ROLE_ADMIN")
+                .mvcMatchers(HttpMethod.POST,"/credit-card/*").hasAuthority("ROLE_ADMIN")
+                .mvcMatchers(HttpMethod.PUT,"/credit-card/*").hasAuthority("ROLE_ADMIN")
+                .mvcMatchers(HttpMethod.PATCH,"/credit-card/*").hasAuthority("ROLE_ADMIN")
+                .mvcMatchers(HttpMethod.DELETE,"/credit-card/*").hasAuthority("ROLE_ADMIN")
+                .mvcMatchers(HttpMethod.GET,"/credit-cards").hasAuthority("ROLE_ADMIN")
                 // endregion
 
 

@@ -5,7 +5,6 @@ import com.ironhack.edgeservice.client.UserClient;
 import com.ironhack.edgeservice.exception.AccountClientNotWorkingException;
 import com.ironhack.edgeservice.exception.AccountNotFoundException;
 import com.ironhack.edgeservice.model.classes.Account;
-import com.ironhack.edgeservice.model.classes.User;
 import com.ironhack.edgeservice.util.JwtUtil;
 import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,7 +20,6 @@ public class AccountService {
     AccountClient accountClient;
     @Autowired
     UserClient userClient;
-
     @Autowired
     JwtUtil jwtUtil;
 
@@ -101,6 +99,4 @@ public class AccountService {
     public void deleteAccountNotAvailable(Integer id) {
         throw new AccountClientNotWorkingException("account-service not available!");
     }
-
-
 }

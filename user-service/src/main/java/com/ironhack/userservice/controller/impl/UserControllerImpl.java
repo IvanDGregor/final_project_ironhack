@@ -3,7 +3,9 @@ package com.ironhack.userservice.controller.impl;
 import com.ironhack.userservice.controller.UserController;
 import com.ironhack.userservice.exceptions.NoSuchUserException;
 import com.ironhack.userservice.exceptions.UserAlreadyExistsException;
+import com.ironhack.userservice.model.classes.Role;
 import com.ironhack.userservice.model.classes.User;
+import com.ironhack.userservice.model.dto.CreateUserDTO;
 import com.ironhack.userservice.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -24,12 +26,9 @@ public class UserControllerImpl implements UserController {
     public List<User> getUsers() {
         return userService.getAll();
     }
-
     /**
-     * Finds a User by username.
-     * @param username Receives the User for searching by Param.
-     * @return Returns a User matching the given username.
-     * @throws NoSuchUserException a Exception
+     * Finds a User with a username param
+     * @return Returns a user with a username param.
      */
     @GetMapping("/users/{username}")
     @Override
@@ -38,14 +37,24 @@ public class UserControllerImpl implements UserController {
     }
 
     /**
+     * Find a User with user id
+     * @param user_id Receives the User Id.
+     * @return Returns the User with user id.
+     */
+    @GetMapping("/user/{user_id}")
+    @ResponseStatus(HttpStatus.OK)
+    public User findById(@PathVariable(name = "user_id") String user_id) {
+        return userService.findById(user_id);
+    }
+    /**
      * Creates a new User.
-     * @param user Receives the User Object by Body.
+     * @param userDTO Receives the User Object by Body.
      * @return Returns the new User.
      */
     @PostMapping("/user")
     @ResponseStatus(HttpStatus.CREATED)
-    public User createUser(@RequestBody User user) throws UserAlreadyExistsException {
-        return userService.createUser(user);
+    public void createUser(@RequestBody CreateUserDTO userDTO) throws UserAlreadyExistsException {
+        userService.createUser(userDTO);
     }
 
     /**
@@ -55,7 +64,7 @@ public class UserControllerImpl implements UserController {
      */
     @PutMapping("/user/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    public void updateUser(@PathVariable Integer id, @RequestBody User user){
+    public void updateUser(@PathVariable String id, @RequestBody User user){
         userService.updateUser(id, user);
     }
 
@@ -65,7 +74,7 @@ public class UserControllerImpl implements UserController {
      */
     @DeleteMapping("/user/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    public void deleteUserById(@PathVariable Integer id) {
+    public void deleteUserById(@PathVariable String id) {
         userService.deleteUserById(id);
     }
 

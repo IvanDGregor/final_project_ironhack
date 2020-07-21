@@ -6,8 +6,8 @@ import java.util.List;
 
 public interface CreditCardControllerInterface {
     public List<CreditCard> findAll();
-    public CreditCard findById(Integer credit_card_id);
+    public CreditCard findById(String credit_card_id);
     public CreditCard createCreditCard(CreditCard creditCard);
-    public void updateCreditCardById(Integer id, CreditCard creditCard);
-    public void deleteCreditCardById(Integer id);
+    public void updateCreditCardById(String id, CreditCard creditCard);
+    public void deleteCreditCardById(String id);
 }

@@ -1,4 +1,4 @@
-package com.ironhack.accountservice.model;
+package com.ironhack.accountservice.model.classes;
 
 import com.ironhack.accountservice.model.enums.Status;
 import org.hibernate.annotations.DynamicUpdate;
@@ -15,8 +15,7 @@ public class Account {
      * Account's Id
      */
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
+    private String id;
     /**
      * Account's balance
      */
@@ -31,12 +30,12 @@ public class Account {
     /**
      * Account's Secret key
      */
-    private String secret_key;
+    private String secretKey;
 
     /**
      * Account's User id associated
      */
-    private Integer user_id;
+    private String userId;
 
     /**
      * Void Constructor
@@ -45,14 +44,14 @@ public class Account {
 
     /**
      * Constructor
-     * @param secret_key Receives the Account's secret key
+     * @param secretKey Receives the Account's secret key
      * @param balance Receives the Account's balance
-     * @param user_id Receives the Account's user id associated to account
+     * @param userId Receives the Account's user id associated to account
      * Status set ACTIVE for default
      */
-    public Account(String secret_key, BigDecimal balance, Integer user_id) {
-        this.secret_key = secret_key;
-        this.user_id = user_id;
+    public Account(String secretKey, BigDecimal balance, String userId) {
+        this.secretKey = secretKey;
+        this.userId = userId;
         this.balance = balance;
         setStatus(Status.ACTIVE);
     }
@@ -61,7 +60,7 @@ public class Account {
      * Getter of Account's Id
      * @return Returns the Account's Id
      */
-    public Integer getId() {
+    public String getId() {
         return id;
     }
 
@@ -69,7 +68,7 @@ public class Account {
      * Setter of Account's Id
      * @param id Receives a Account's Id
      */
-    public void setId(Integer id) {
+    public void setId(String id) {
         this.id = id;
     }
 
@@ -107,28 +106,28 @@ public class Account {
      * Getter of Account's secret key
      * @return Returns the Account's secret key
      */
-    public String getSecret_key() {
-        return secret_key;
+    public String getSecretKey() {
+        return secretKey;
     }
     /**
      * Setter of Account's secret key
      * @param secret_key Receives a Account's secret key
      */
-    public void setSecret_key(String secret_key) {
-        this.secret_key = secret_key;
+    public void setSecretKey(String secret_key) {
+        this.secretKey = secret_key;
     }
     /**
      * Getter of Account's user id
      * @return Returns the Account's user id
      */
-    public Integer getUser_id() {
-        return user_id;
+    public String getUserId() {
+        return userId;
     }
     /**
      * Setter of Account's user id
      * @param user_id Receives a Account's user id
      */
-    public void setUser_id(Integer user_id) {
-        this.user_id = user_id;
+    public void setUserId(String user_id) {
+        this.userId = user_id;
     }
 }

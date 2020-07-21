@@ -2,7 +2,7 @@ package com.ironhack.accountservice.controller.impl;
 
 import com.ironhack.accountservice.controller.interfaces.AccountControllerInterface;
 import com.ironhack.accountservice.exception.AccountNotFoundException;
-import com.ironhack.accountservice.model.Account;
+import com.ironhack.accountservice.model.classes.Account;
 import com.ironhack.accountservice.service.AccountService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -25,14 +25,14 @@ public class AccountControllerImpl implements AccountControllerInterface {
     }
     /**
      * Finds a Account by account id.
-     * @param account_id Receives the Account for searching by Param.
+     * @param accountId Receives the Account for searching by Param.
      * @return Returns a Account matching the given username.
      * @throws AccountNotFoundException a Exception
      */
-    @GetMapping("/account/{account_id}")
+    @GetMapping("/account/{accountId}")
     @ResponseStatus(HttpStatus.OK)
-    public Account findById(@PathVariable(name = "account_id") Integer account_id) {
-        return accountService.findById(account_id);
+    public Account findById(@PathVariable(name = "accountId") String accountId) {
+        return accountService.findById(accountId);
     }
 
     /**
@@ -53,7 +53,7 @@ public class AccountControllerImpl implements AccountControllerInterface {
      */
     @PutMapping("/account/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    public Account updateAccount(@PathVariable Integer id, @RequestBody Account account){
+    public Account updateAccount(@PathVariable String id, @RequestBody Account account){
         return accountService.updateAccount(id, account);
     }
 
@@ -63,7 +63,7 @@ public class AccountControllerImpl implements AccountControllerInterface {
      */
     @DeleteMapping("/account/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    public void deleteAccount(@PathVariable Integer id) {
+    public void deleteAccount(@PathVariable String id) {
         accountService.deleteAccount(id);
     }
 }

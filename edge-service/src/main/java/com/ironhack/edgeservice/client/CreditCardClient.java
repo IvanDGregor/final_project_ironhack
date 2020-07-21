@@ -1,0 +1,22 @@
+package com.ironhack.edgeservice.client;
+
+import com.ironhack.edgeservice.model.classes.Account;
+import com.ironhack.edgeservice.model.classes.CreditCard;
+import org.springframework.cloud.openfeign.FeignClient;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
+
+@FeignClient(name ="credit-card-service")
+public interface CreditCardClient {
+    @GetMapping("/credit-cards")
+    public List<CreditCard> findAll(@RequestHeader(name = "Authorization") String token);
+    @GetMapping("/credit-card/{card_id}")
+    public CreditCard findById(@RequestHeader(name = "Authorization") String token, @PathVariable(name = "card_id") Integer card_id);
+    @PostMapping("/credit-card")
+    public CreditCard createCreditCard(@RequestHeader(name = "Authorization") String token, @RequestBody CreditCard creditCard);
+    @PutMapping("/credit-card/{card_id}")
+    public CreditCard updateCreditCard(@RequestHeader(name = "Authorization") String token, @PathVariable Integer card_id, @RequestBody CreditCard creditCard);
+    @DeleteMapping("/credit-card/{card_id}")
+    public void deleteCreditCard(@RequestHeader(name = "Authorization") String token, @PathVariable Integer card_id);
+}

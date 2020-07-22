@@ -47,7 +47,7 @@ public class AccountService {
      * @throws DataNotFoundException if there isn't a user whose id attribute doesn't match with id param
      */
     public Account updateAccount(String id, Account account) throws DataNotFoundException {
-        Account accountFound = accountRepository.findById(id).orElseThrow(() -> new DataNotFoundException("Could not find that User."));
+        Account accountFound = accountRepository.findById(id).orElseThrow(() -> new DataNotFoundException("Could not find that Account."));
         accountFound.setBalance(account.getBalance());
         accountFound.setSecretKey(account.getSecretKey());
         accountFound.setStatus(account.getStatus());

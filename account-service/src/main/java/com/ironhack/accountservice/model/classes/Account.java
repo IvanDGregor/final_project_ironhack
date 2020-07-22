@@ -49,7 +49,8 @@ public class Account {
      * @param userId Receives the Account's user id associated to account
      * Status set ACTIVE for default
      */
-    public Account(String secretKey, BigDecimal balance, String userId) {
+    public Account(String id, String secretKey, BigDecimal balance, String userId) {
+        this.id = id;
         this.secretKey = secretKey;
         this.userId = userId;
         this.balance = balance;

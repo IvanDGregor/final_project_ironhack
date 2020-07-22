@@ -1,7 +1,7 @@
 package com.ironhack.creditcardservice.controller.impl;
 
 import com.ironhack.creditcardservice.controller.interfaces.CreditCardControllerInterface;
-import com.ironhack.creditcardservice.model.CreditCard;
+import com.ironhack.creditcardservice.model.classes.CreditCard;
 import com.ironhack.creditcardservice.service.CreditCardService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;

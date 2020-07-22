@@ -35,8 +35,6 @@ class AccountServiceTest {
         accountService.createAccount(account2);
     }
 
-
-
     @Test
     void findById() {
         Account targetAccount = accountService.findById(account1.getId());

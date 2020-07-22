@@ -2,7 +2,7 @@ package com.ironhack.creditcardservice.service;
 
 import com.ironhack.creditcardservice.exception.CreditCardNotFoundException;
 import com.ironhack.creditcardservice.exception.DataNotFoundException;
-import com.ironhack.creditcardservice.model.CreditCard;
+import com.ironhack.creditcardservice.model.classes.CreditCard;
 import com.ironhack.creditcardservice.repository.CreditCardRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

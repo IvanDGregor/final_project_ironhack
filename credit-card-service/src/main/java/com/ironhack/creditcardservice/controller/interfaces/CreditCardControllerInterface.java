@@ -1,6 +1,6 @@
 package com.ironhack.creditcardservice.controller.interfaces;
 
-import com.ironhack.creditcardservice.model.CreditCard;
+import com.ironhack.creditcardservice.model.classes.CreditCard;
 
 import java.util.List;
 

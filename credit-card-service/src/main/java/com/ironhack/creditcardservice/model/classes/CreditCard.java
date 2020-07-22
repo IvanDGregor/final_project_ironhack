@@ -1,11 +1,9 @@
-package com.ironhack.creditcardservice.model;
+package com.ironhack.creditcardservice.model.classes;
 
 import com.ironhack.creditcardservice.model.enums.Status;
 import org.hibernate.annotations.DynamicUpdate;
 
 import javax.persistence.*;
-import javax.persistence.criteria.CriteriaBuilder;
-import java.math.BigDecimal;
 
 /** Entity Credit Card is related a register which the user information **/
 @Entity
@@ -42,7 +40,8 @@ public class CreditCard {
      * @param user_id Receives the Credit Card's user id associated to credit card
      * Status set ACTIVE for default
      */
-    public CreditCard(String pin, String user_id) {
+    public CreditCard(String id, String pin, String user_id) {
+        this.id = id;
         this.pin = pin;
         this.user_id = user_id;
         this.status = Status.ACTIVE;

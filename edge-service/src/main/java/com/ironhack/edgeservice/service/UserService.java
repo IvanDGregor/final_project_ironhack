@@ -111,13 +111,13 @@ public class UserService implements UserDetailsService {
      * @return The User which was added in userRepository's list
      */
     @HystrixCommand(fallbackMethod = "updateUserNotAvailable")
-    public User updateUser(String id, User user) throws UserNotFoundException {
+    public void updateUser(String id, User user) throws UserNotFoundException {
         String userToken = "Bearer " + jwtUtil.generateToken("user-service");
         if (userClient.findById(userToken, id) != null) {
-            return userClient.updateUser(userToken, id, user);
+            userClient.updateUser(userToken, id, user);
         } else throw new UserNotFoundException("There's no User with id: " + user.getUserId());
     }
-    public User updateUserNotAvailable(String id, User user) {
+    public void updateUserNotAvailable(String id, User user) {
         throw new UserClientNotWorkingException("user-service not available!");
     }
 

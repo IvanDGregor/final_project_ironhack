@@ -38,7 +38,7 @@ public class CreditCardController {
      */
     @GetMapping("/credit-card/{credit_card_id}")
     @ResponseStatus(HttpStatus.OK)
-    public CreditCard findById(@PathVariable(name = "credit_card_id") Integer credit_card_id) {
+    public CreditCard findById(@PathVariable(name = "credit_card_id") String credit_card_id) {
         return creditCardService.findById(credit_card_id);
     }
 
@@ -51,7 +51,7 @@ public class CreditCardController {
     @ApiOperation(value="Create New Credit Card",
             response = CreditCard.class)
     @ResponseStatus(HttpStatus.CREATED)
-    public CreditCard createAccount(@RequestBody CreditCard creditCard) {
+    public CreditCard createCreditCard(@RequestBody CreditCard creditCard) {
         return creditCardService.createCreditCard(creditCard);
     }
 
@@ -64,9 +64,9 @@ public class CreditCardController {
     @PutMapping("/credit-card/{credit_card_id}")
     @ApiOperation(value="Update Credit Card",
             response = Account.class)
-    @ResponseStatus(HttpStatus.OK)
-    public CreditCard updateCreditCard(@PathVariable(name = "credit_card_id") Integer credit_card_id, @RequestBody CreditCard creditCard){
-        return creditCardService.updateCreditCard(credit_card_id, creditCard);
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    public void updateCreditCard(@PathVariable(name = "credit_card_id") String credit_card_id, @RequestBody CreditCard creditCard){
+        creditCardService.updateCreditCard(credit_card_id, creditCard);
     }
 
     /**
@@ -78,7 +78,7 @@ public class CreditCardController {
     @ApiOperation(value="Delete Credit Card",
             response = CreditCard.class)
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    public void deleteAccount(@PathVariable(name = "credit_card_id") Integer credit_card_id){
+    public void deleteCreditCard(@PathVariable(name = "credit_card_id") String credit_card_id){
         creditCardService.deleteCreditCard(credit_card_id);
     }
 }

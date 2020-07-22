@@ -18,6 +18,7 @@ import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Service
 public class TransactionService {
@@ -30,7 +31,7 @@ public class TransactionService {
     private CreditCardRepository creditCardRepository;
 
     @Transactional
-    public Transaction transfer(TransferDTO transferDTO){
+    public void transfer(TransferDTO transferDTO){
         Account accountSender = accountRepository.findById(transferDTO.getAccountSenderId()).orElseThrow(() -> new AccountNotFoundException("There's no account with provided ID"));
 
         if (accountSender.getStatus() == Status.FROZEN) throw new FraudDetectionException("Your account is blocked for fraud inspection purposes, please contact customer service");
@@ -44,14 +45,13 @@ public class TransactionService {
                 accountRepository.save(accountReceiver);
                 Transaction transaction = new Transaction(transferDTO.getAccountSenderId(),transferDTO.getAccountReceiverId(),accountSender.getUserId(),transferDTO.getAmount(), LocalDateTime.now(), TypeTransaction.TRANSFER);
                 transactionRepository.save(transaction);
-                return transaction;
             }
             throw new FraudDetectionException("Not enough balance in the account");
         }
         throw new FraudDetectionException("Invalid Secret Key");
     }
     @Transactional
-    public Transaction payment(PaymentDTO paymentDTO){
+    public void payment(PaymentDTO paymentDTO){
         CreditCard creditCard = creditCardRepository.findById(paymentDTO.getCreditCardId()).orElseThrow(() -> new DataNotFoundException("There's no creditcard with provided ID"));
         if(creditCard.getStatus() == Status.FROZEN) throw new FraudDetectionException("This credit card is blocked");
         if(!paymentDTO.getPin().equals(creditCard.getPin())) throw new FraudDetectionException("The PIN is invalid");
@@ -62,8 +62,15 @@ public class TransactionService {
             accountRepository.save(account);
             Transaction transaction = new Transaction(account.getId(),creditCard.getId(),creditCard.getUserId(),paymentDTO.getAmount(), LocalDateTime.now(), TypeTransaction.CREDITCARD);
             transactionRepository.save(transaction);
-            return transaction;
         }
         throw new FraudDetectionException("Not enough balance in the account");
+    }
+
+    /**
+     * This method return all list of transactions by User Id
+     * @param userId a String
+     */
+   public List<Transaction> findAllByUserId(String userId) {
+        return transactionRepository.findAllByUserId(userId);
     }
 }

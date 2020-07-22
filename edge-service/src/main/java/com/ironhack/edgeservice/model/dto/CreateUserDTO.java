@@ -30,14 +30,6 @@ public class CreateUserDTO {
         this.role = role;
     }
 
-    public CreateUserDTO(@NotNull(message = "Username must not be null") String username, @NotNull(message = "Surname must not be null") String surname, @NotNull(message = "Password type must not be null") String password, @NotNull(message = "Date Birth type must not be null") LocalDateTime date_birth, @NotEmpty(message = "Role must not be null") String role) {
-        this.username = username;
-        this.surname = surname;
-        this.password = password;
-        this.date_birth = date_birth;
-        this.role = role;
-    }
-
     public String getUsername() {
         return username;
     }

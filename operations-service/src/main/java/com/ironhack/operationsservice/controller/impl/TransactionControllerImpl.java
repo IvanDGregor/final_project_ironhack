@@ -8,6 +8,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 public class TransactionControllerImpl {
 
@@ -17,22 +19,31 @@ public class TransactionControllerImpl {
     /**
      * Method for make a transfer.
      * @param transferDTO Receives the DTO object modified by Body.
-     * @return Returns the transaction.
      */
     @PutMapping("/transaction/transfer")
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    public Transaction transfer(@RequestBody TransferDTO transferDTO){
-        return transactionService.transfer(transferDTO);
+    public void transfer(@RequestBody TransferDTO transferDTO){
+        transactionService.transfer(transferDTO);
     }
 
     /**
      * Method for make a payment.
      * @param paymentDTO Receives the DTO object modified by Body.
-     * @return Returns the transaction.
      */
     @PutMapping("/transaction/payment")
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    public Transaction payment(@RequestBody PaymentDTO paymentDTO){
-        return transactionService.payment(paymentDTO);
+    public void payment(@RequestBody PaymentDTO paymentDTO){
+        transactionService.payment(paymentDTO);
+    }
+
+    /**
+     * Finds a all Transaction by User Id.
+     * @param userId Receives the string for the User Id
+     * @return Returns all Transaction by User Id.
+     */
+    @GetMapping("/transactions/{userId}")
+    @ResponseStatus(HttpStatus.OK)
+    public List<Transaction> findAllByUserId(@PathVariable String userId){
+        return transactionService.findAllByUserId(userId);
     }
 }

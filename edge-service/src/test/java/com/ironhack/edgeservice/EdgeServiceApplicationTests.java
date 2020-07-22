@@ -9,5 +9,8 @@ class EdgeServiceApplicationTests {
     @Test
     void contextLoads() {
     }
-
+    @Test
+    public void main() {
+        EdgeServiceApplication.main(new String[] {});
+    }
 }

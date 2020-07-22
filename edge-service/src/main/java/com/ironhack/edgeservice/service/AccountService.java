@@ -43,12 +43,12 @@ public class AccountService {
      * @return The Account which was added in accountRepository's list
      */
     @HystrixCommand(fallbackMethod = "notFindByIdAccount")
-    public Account findById(Integer id) {
+    public Account findById(String id) {
         String accountToken = "Bearer " + jwtUtil.generateToken("account-service");
         return accountClient.findById(accountToken, id);
     }
 
-    public Account notFindByIdAccount(Integer id) {
+    public Account notFindByIdAccount(String id) {
         throw new AccountClientNotWorkingException("account-service not available!");
     }
 
@@ -73,14 +73,14 @@ public class AccountService {
      * @return The Account which was added in accountRepository's list
      */
     @HystrixCommand(fallbackMethod = "updateAccountNotAvailable")
-    public Account updateAccount(Integer id, Account account) throws AccountNotFoundException {
+    public void updateAccount(String id, Account account) throws AccountNotFoundException {
         String accountToken = "Bearer " + jwtUtil.generateToken("account-service");
         if (accountClient.findById(accountToken, id) != null) {
             System.out.println("Call client account");
-            return accountClient.updateAccount(accountToken, id, account);
+            accountClient.updateAccount(accountToken, id, account);
         } else throw new AccountNotFoundException("There's no Account with id: " + account.getId());
     }
-    public Account updateAccountNotAvailable(Integer id, Account account) {
+    public void updateAccountNotAvailable(String id, Account account) {
         throw new AccountClientNotWorkingException("account-service not available!");
     }
 
@@ -89,14 +89,14 @@ public class AccountService {
      * @param id a integer to delete account
      */
     @HystrixCommand(fallbackMethod = "deleteAccountNotAvailable")
-    public void deleteAccount(Integer id) throws AccountNotFoundException {
+    public void deleteAccount(String id) throws AccountNotFoundException {
         String accountToken = "Bearer " + jwtUtil.generateToken("account-service");
         if (accountClient.findById(accountToken, id) != null) {
             accountClient.deleteAccount(accountToken, id);
         } else throw new AccountNotFoundException("There's no Account with id: " + id);
     }
 
-    public void deleteAccountNotAvailable(Integer id) {
+    public void deleteAccountNotAvailable(String id) {
         throw new AccountClientNotWorkingException("account-service not available!");
     }
 }

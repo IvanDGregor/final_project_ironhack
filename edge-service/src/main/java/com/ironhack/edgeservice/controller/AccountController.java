@@ -39,7 +39,7 @@ public class AccountController {
      */
     @GetMapping("/account/{account_id}")
     @ResponseStatus(HttpStatus.OK)
-    public Account findById(@PathVariable(name = "account_id") Integer account_id) {
+    public Account findById(@PathVariable(name = "account_id") String account_id) {
         return accountService.findById(account_id);
     }
     /**
@@ -63,9 +63,9 @@ public class AccountController {
     @PutMapping("/account/{account_id}")
     @ApiOperation(value="Update Account",
             response = Account.class)
-    @ResponseStatus(HttpStatus.OK)
-    public Account updateAccount(@PathVariable(name = "account_id") Integer account_id, @RequestBody Account account){
-        return accountService.updateAccount(account_id, account);
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    public void updateAccount(@PathVariable(name = "account_id") String account_id, @RequestBody Account account){
+        accountService.updateAccount(account_id, account);
     }
 
     /**
@@ -77,7 +77,7 @@ public class AccountController {
     @ApiOperation(value="Delete Account",
             response = Account.class)
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    public void deleteAccount(@PathVariable(name = "account_id") Integer account_id){
+    public void deleteAccount(@PathVariable(name = "account_id") String account_id){
         accountService.deleteAccount(account_id);
     }
 }

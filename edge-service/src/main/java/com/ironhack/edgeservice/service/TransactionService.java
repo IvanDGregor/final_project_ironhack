@@ -14,6 +14,8 @@ import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class TransactionService {
     @Autowired
@@ -28,12 +30,12 @@ public class TransactionService {
      * @param transferDTO a object to make transfer
      */
     @HystrixCommand(fallbackMethod = "transferNotAvailable")
-    public Transaction transfer(TransferDTO transferDTO) {
+    public void transfer(TransferDTO transferDTO) {
         String operationToken = "Bearer " + jwtUtil.generateToken("operations-service");
-        return operationClient.transfer(operationToken, transferDTO);
+        operationClient.transfer(operationToken, transferDTO);
     }
 
-    public Transaction transferNotAvailable(TransferDTO transferDTO) {
+    public void transferNotAvailable(TransferDTO transferDTO) {
         throw new OperationsClientNotWorkingException("operations-service not available!");
     }
 
@@ -42,14 +44,27 @@ public class TransactionService {
      * @param paymentDTO a Object to make a payment
      */
     @HystrixCommand(fallbackMethod = "paymentNotAvailable")
-    public Transaction payment(PaymentDTO paymentDTO) {
+    public void payment(PaymentDTO paymentDTO) {
         String operationToken = "Bearer " + jwtUtil.generateToken("operations-service");
-        return operationClient.payment(operationToken, paymentDTO);
+        operationClient.payment(operationToken, paymentDTO);
     }
 
-    public Transaction paymentNotAvailable(PaymentDTO paymentDTO) {
+    public void paymentNotAvailable(PaymentDTO paymentDTO) {
         throw new OperationsClientNotWorkingException("operations-service not available!");
     }
 
+    /**
+     * This method return all list of transactions by User Id
+     * @param userId a String
+     */
+    @HystrixCommand(fallbackMethod = "findAllByUserIdNotAvailable")
+    public List<Transaction> findAllByUserId(String userId) {
+        String operationToken = "Bearer " + jwtUtil.generateToken("operations-service");
+        return operationClient.findAllByUserId(operationToken, userId);
+    }
+
+    public List<Transaction> findAllByUserIdNotAvailable(String userId) {
+        throw new OperationsClientNotWorkingException("operations-service not available!");
+    }
 
 }

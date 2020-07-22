@@ -32,7 +32,8 @@ public class CreditCard {
      * @param userId Receives the Credit card's user id associated to account
      * Status set ACTIVE for default
      */
-    public CreditCard(String pin, String userId) {
+    public CreditCard(String id, String pin, String userId) {
+        this.id = id;
         this.pin = pin;
         this.userId = userId;
         this.status = Status.ACTIVE;

@@ -13,14 +13,14 @@ import java.util.List;
 public interface UserClient {
     @GetMapping("/users")
     public List<User> getAll(@RequestHeader(name = "Authorization") String token);
-    @GetMapping("/users/{username}")
+    @GetMapping("/user/username/{username}")
     public User findByUsername(@RequestHeader(name = "Authorization") String token, @PathVariable(name = "username") String username);
     @GetMapping("/user/{user_id}")
     public User findById(@RequestHeader(name = "Authorization") String token, @PathVariable(name = "user_id") String user_id);
     @PostMapping("/user")
     public void createUser(@RequestHeader(name = "Authorization") String token, @RequestBody CreateUserDTO createUserDTO);
     @PutMapping("/user/{user_id}")
-    public User updateUser(@RequestHeader(name = "Authorization") String token, @PathVariable String user_id, @RequestBody User user);
+    public void updateUser(@RequestHeader(name = "Authorization") String token, @PathVariable String user_id, @RequestBody User user);
     @DeleteMapping("/user/{user_id}")
     public void deleteUser(@RequestHeader(name = "Authorization") String token, @PathVariable String user_id);
 }

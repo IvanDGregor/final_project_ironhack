@@ -4,7 +4,6 @@ import com.ironhack.edgeservice.model.classes.Account;
 import com.ironhack.edgeservice.model.classes.CreditCard;
 import com.ironhack.edgeservice.model.classes.User;
 import com.ironhack.edgeservice.model.dto.CreateUserDTO;
-import com.ironhack.edgeservice.service.AccountService;
 import com.ironhack.edgeservice.service.UserService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -77,9 +76,9 @@ public class UserController {
     @PutMapping("/user/{user_id}")
     @ApiOperation(value="Update User",
             response = User.class)
-    @ResponseStatus(HttpStatus.OK)
-    public User updateUser(@PathVariable(name = "user_id") String user_id, @RequestBody User user){
-        return userService.updateUser(user_id, user);
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    public void updateUser(@PathVariable(name = "user_id") String user_id, @RequestBody User user){
+        userService.updateUser(user_id, user);
     }
 
     /**

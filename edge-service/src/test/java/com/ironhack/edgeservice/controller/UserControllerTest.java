@@ -70,7 +70,13 @@ class UserControllerTest {
         newUser.setPassword("test");
         user = new CustomSecuredUser(newUser);
 
-        createUserDTO1 = new CreateUserDTO("12345678A","Pepe","Macias","1234",LocalDateTime.of(2020,1,1,10,00),"ADMIN_ROLE");
+        createUserDTO1 = new CreateUserDTO();
+        createUserDTO1.setUserId("12345678A");
+        createUserDTO1.setUsername("Pepe");
+        createUserDTO1.setSurname("Macias");
+        createUserDTO1.setPassword("1234");
+        createUserDTO1.setDate_birth(LocalDateTime.of(2020,1,1,10,00));
+        createUserDTO1.setRole("ADMIN_ROLE");
 
         when(userService.loadUserByUsername("user")).thenReturn(user);
         when(userService.getAllUsers()).thenReturn(new ArrayList<>());

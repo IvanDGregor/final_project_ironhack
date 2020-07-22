@@ -76,10 +76,23 @@ class TransactionControllerTest {
         newUser.getRoles().add(role);
         newUser.setPassword("test");
         user = new CustomSecuredUser(newUser);
-        transactionTransfer = new Transaction("ES400","ES4501","12345678A",new BigDecimal("350"), LocalDateTime.of(2020, 1, 1, 10, 00), TypeTransaction.TRANSFER);
+        transactionTransfer = new Transaction();
+        transactionTransfer.setAccountReceiverId("ES400");
+        transactionTransfer.setAccountSenderId("ES4501");
+        transactionTransfer.setUserId("12345678A");
+        transactionTransfer.setAmount(new BigDecimal("350"));
+        transactionTransfer.setDate(LocalDateTime.of(2020, 1, 1, 10, 00));
+        transactionTransfer.setTypeTransaction(TypeTransaction.TRANSFER);
         transactionPayment = new Transaction("1234567","ES4500","12345678A",new BigDecimal("350"), LocalDateTime.of(2020, 1, 1, 10, 00), TypeTransaction.CREDITCARD);
-        transferDTO1 = new TransferDTO("ES4500","ES4501",new BigDecimal("100"),"1234");
-        paymentDTO1 = new PaymentDTO("1234567","1234",new BigDecimal("120"));
+        transferDTO1 = new TransferDTO();
+        transferDTO1.setAccountReceiverId("ES4500");
+        transferDTO1.setAccountSenderId("ES4501");
+        transferDTO1.setAmount(new BigDecimal("100"));
+        transferDTO1.setSecret_key("1234");
+        paymentDTO1 = new PaymentDTO();
+        paymentDTO1.setCreditCardId("1234567");
+        paymentDTO1.setPin("1234");
+        paymentDTO1.setAmount(new BigDecimal("120"));
 
         when(userService.loadUserByUsername("user")).thenReturn(user);
         when(transactionService.findAllByUserId("12345678A")).thenReturn(new ArrayList<>());

@@ -26,6 +26,7 @@ import { IndustryReportComponent } from './industry-report/industry-report.compo
 import { ProductReportComponent } from './product-report/product-report.component';
 import { StatsReportComponent } from './stats-report/stats-report.component';
 import { ToastrModule } from 'ngx-toastr';
+import { DashboardComponent } from './dashboard/dashboard.component';
 
 @NgModule({
   declarations: [
@@ -48,6 +49,7 @@ import { ToastrModule } from 'ngx-toastr';
     IndustryReportComponent,
     ProductReportComponent,
     StatsReportComponent,
+    DashboardComponent,
   ],
   imports: [
     BrowserModule,

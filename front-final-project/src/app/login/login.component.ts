@@ -24,7 +24,7 @@ export class LoginComponent implements OnInit {
   invalidLogin = false;
   error = '';
   loading = false;
-  returnUrl = '/leads';
+  returnUrl = '/dashboard';
   disabled = false;
 
   constructor(
@@ -36,7 +36,7 @@ export class LoginComponent implements OnInit {
 
   ngOnInit() {
     if (this.authenticationService.userValue) {
-      this.router.navigate(['/leads']);
+      this.router.navigate(['/dashboard']);
     }
     // tslint:disable-next-line: member-ordering
     const signUpButton = document.getElementById('signUp');
@@ -78,7 +78,7 @@ export class LoginComponent implements OnInit {
         (data) => {
           this.router.navigate([this.returnUrl]);
           this.toastr.success(
-            '<span class="tim-icons icon-bell-55" [data-notify]="icon"></span> Welcome to <b>TMNT CRM</b> - a beautiful CRM.',
+            '<span class="tim-icons icon-bell-55" [data-notify]="icon"></span> Welcome to <b>GLOBAL BANK</b> - app.',
             '',
             {
               timeOut: 2000,

@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { AppComponent } from './app.component';
-import { HomeComponent } from './home/home.component';
 import { LeadListComponent } from './lead-list/lead-list.component';
 import { OpportunityListComponent } from './opportunity-list/opportunity-list.component';
 import { CreateFormComponent } from './create-form/create-form.component';
@@ -18,6 +17,7 @@ import { IndustryReportComponent } from './industry-report/industry-report.compo
 import { CountryReportComponent } from './country-report/country-report.component';
 import { CityReportComponent } from './city-report/city-report.component';
 import { StatsReportComponent } from './stats-report/stats-report.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
 const routes: Routes = [
   {
     path: '',
@@ -25,6 +25,12 @@ const routes: Routes = [
     redirectTo: 'login',
   },
   { path: 'login', component: LoginComponent },
+  {
+    path: 'dashboard',
+    component: DashboardComponent,
+    pathMatch: 'full',
+    canActivate: [AuthGuard],
+  },
   {
     path: 'leads',
     component: LeadListComponent,

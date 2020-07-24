@@ -72,8 +72,7 @@ We implemented:
 - Spring
 - MySQL
 - Postman
-- Heroku
-- PostgreSQL
 - Figma (for interface design)
 - Angular
 - Bootstrap
+- Template front (https://www.creative-tim.com/product/black-dashboard-angular)

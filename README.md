@@ -1,6 +1,6 @@
 # Final Project Ironhack Bootcamp Java - Global Bank App
 
-![IronHack Logo](https://s3-eu-west-1.amazonaws.com/ih-materials/uploads/upload_d5c5793015fec3be28a63c4fa3dd4d55.png)
+![IronHack Logo](https://s3-eu-west-1.amazonaws.com/ih-materials/uploads/upload_d5c5793015fec3be28a63c4fa3dd4d55.png)![logoApp](images/logo_global_bank.png)
 
 # Global Bank App
 

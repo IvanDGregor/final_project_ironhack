@@ -27,7 +27,7 @@ public class CreditCard {
     /**
      * Credit Card's user_id
      */
-    private String user_id;
+    private String userId;
 
     /**
      * Void Constructor
@@ -37,13 +37,13 @@ public class CreditCard {
     /**
      * Constructor
      * @param pin Receives the Credit Card's pin
-     * @param user_id Receives the Credit Card's user id associated to credit card
+     * @param userId Receives the Credit Card's user id associated to credit card
      * Status set ACTIVE for default
      */
-    public CreditCard(String id, String pin, String user_id) {
+    public CreditCard(String id, String pin, String userId) {
         this.id = id;
         this.pin = pin;
-        this.user_id = user_id;
+        this.userId = userId;
         this.status = Status.ACTIVE;
     }
     /**
@@ -92,14 +92,14 @@ public class CreditCard {
      * Getter of Credit Card's user id
      * @return Returns the Credit Card's user id
      */
-    public String getUser_id() {
-        return user_id;
+    public String getUserId() {
+        return userId;
     }
     /**
      * Setter of Credit Card's user id
      * @param user_id Receives a Credit Card's user id
      */
-    public void setUser_id(String user_id) {
-        this.user_id = user_id;
+    public void setUserId(String user_id) {
+        this.userId = user_id;
     }
 }

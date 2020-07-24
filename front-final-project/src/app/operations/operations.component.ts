@@ -2,13 +2,13 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthenticationService } from '../_services';
 import { User } from '../_models';
-
 @Component({
-  selector: 'app-create-form',
-  templateUrl: './create-form.component.html',
-  styleUrls: ['./create-form.component.scss'],
+  selector: 'app-operations',
+  templateUrl: './operations.component.html',
+  styleUrls: ['./operations.component.scss']
 })
-export class  CreateFormComponent implements OnInit {
+export class OperationsComponent implements OnInit {
+
   user: User;
   isAdmin: boolean;
 

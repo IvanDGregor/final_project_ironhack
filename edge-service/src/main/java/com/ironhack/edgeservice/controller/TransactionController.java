@@ -55,4 +55,17 @@ public class TransactionController {
     public void payment(@RequestBody PaymentDTO paymentDTO){
         transactionService.payment(paymentDTO);
     }
+
+    /**
+     * Finds a all Transaction by User Id.
+     * @return Returns all Transaction by User Id.
+     */
+    @GetMapping("/transactions")
+    @ApiOperation(value="Find All Transactions",
+            notes = "Find All Transactions",
+            response = Transaction.class)
+    @ResponseStatus(HttpStatus.OK)
+    public List<Transaction> findAll(){
+        return transactionService.findAll();
+    }
 }

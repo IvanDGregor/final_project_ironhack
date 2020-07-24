@@ -19,7 +19,6 @@ import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.web.context.WebApplicationContext;
 
-import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -62,12 +61,12 @@ public class CreditCardControllerImplTest {
         creditCard1.setId("1111222233334444");
         creditCard1.setPin("1234");
         creditCard1.setStatus(Status.ACTIVE);
-        creditCard1.setUser_id("1234567A");
+        creditCard1.setUserId("1234567A");
         creditCard2 = new CreditCard();
         creditCard2.setId("4444333322221111");
         creditCard2.setPin("1234");
         creditCard2.setStatus(Status.ACTIVE);
-        creditCard2.setUser_id("1234567B");
+        creditCard2.setUserId("1234567B");
         creditCardList = new ArrayList<CreditCard>();
         creditCardList.add(creditCard1);
         creditCardList.add(creditCard2);

@@ -1,0 +1,113 @@
+<app-layout>
+    <div class="content">
+      <div class="row">
+        <div class="col-md-8">
+          <div class="card">
+            <div class="card-header">
+              <h5 class="title">Create New Sales Rep</h5>
+            </div>
+  
+            <div class="card-body">
+              <form [formGroup]="transferForm" (ngSubmit)="onSubmit()">
+                <label>Information Transfer</label>
+                <div class="row">
+                  <div class="col-md-5 pr-md-1">
+                    <div class="form-group">
+                      <label>Account Sender</label>
+                      <input
+                        class="form-control {{
+                          this.transferForm.get('accountSenderId')?.errors
+                            ? 'is-invalid'
+                            : ''
+                        }}"
+                        placeholder="ESXXXX"
+                        type="text"
+                        formControlName="accountSenderId"
+                      />
+                    </div>
+                  </div>
+                  <div class="col-md-3 px-md-1">
+                    <div class="form-group">
+                      <label> Account Receiver </label>
+                      <input
+                        class="form-control {{
+                          this.transferForm.get('accountReceiverId')?.errors
+                            ? 'is-invalid'
+                            : ''
+                        }}"
+                        placeholder="ESXXXX"
+                        type="text"
+                        formControlName="accountReceiverId"
+                      />
+                    </div>
+                  </div>
+                  <div class="col-md-4 pl-md-1">
+                    <div class="form-group">
+                      <label> Amount </label>
+                      <input
+                        class="form-control {{
+                          this.transferForm.get('amount')?.errors
+                            ? 'is-invalid'
+                            : ''
+                        }}"
+                        placeholder="1000.00"
+                        type="number"
+                        formControlName="amount"
+                      />
+                    </div>
+                  </div>
+                  <div class="col-md-4 pl-md-1">
+                    <div class="form-group">
+                      <label> Secret Key </label>
+                      <input
+                        class="form-control {{
+                          this.transferForm.get('secret_key')?.errors
+                            ? 'is-invalid'
+                            : ''
+                        }}"
+                        placeholder="****"
+                        type="password"
+                        formControlName="secret_key"
+                      />
+                    </div>
+                  </div>
+                </div>
+                <div class="card-footer">
+                  <button
+                    [disabled]="!isValid"
+                    class="btn btn-fill btn-danger"
+                    type="submit"
+                  >
+                    Transfer
+                  </button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="card card-user">
+            <div class="card-body">
+              <p class="card-text"></p>
+              <div class="author">
+                <p class="description">New Transfer</p>
+              </div>
+              <div class="card-description">
+                To create New Transfer this is the information you need to include:
+                <br />
+                - Account ID sender
+                <br />
+                - Account ID Receiver
+                <br />
+                - Amount
+                <br />
+                - Secret Key
+              </div>
+            </div>
+            <div class="card-footer"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </app-layout>
+  

@@ -50,7 +50,7 @@ public class CreditCardService {
         CreditCard creditCardFound = creditCardRepository.findById(id).orElseThrow(() -> new DataNotFoundException("Could not find that Credit Card."));
         creditCardFound.setStatus(creditCard.getStatus());
         creditCardFound.setPin(creditCard.getPin());
-        creditCardFound.setUser_id(creditCard.getUser_id());
+        creditCardFound.setUserId(creditCard.getUserId());
         creditCardRepository.save(creditCardFound);
     }
     /**
@@ -61,7 +61,7 @@ public class CreditCardService {
     public void deleteCreditCardById(String id) throws DataNotFoundException {
         CreditCard creditCardFound = creditCardRepository.findById(id).orElseThrow(() -> new DataNotFoundException("Could not find that credit card."));
         creditCardFound.setPin(null);
-        creditCardFound.setUser_id(null);
+        creditCardFound.setUserId(null);
         creditCardFound.setStatus(null);
         creditCardRepository.delete(creditCardFound);
     }

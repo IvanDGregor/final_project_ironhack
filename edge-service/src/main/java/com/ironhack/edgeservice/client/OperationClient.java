@@ -17,4 +17,7 @@ public interface OperationClient {
     public void payment(@RequestHeader(name = "Authorization") String token, @RequestBody PaymentDTO paymentDTO);
     @GetMapping("/transactions/{userId}")
     public List<Transaction> findAllByUserId(@RequestHeader(name = "Authorization") String token, @PathVariable String userId);
+    @GetMapping("/transactions")
+    public List<Transaction> findAll(@RequestHeader(name = "Authorization") String token);
+
 }

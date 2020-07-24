@@ -1,9 +1,10 @@
 import { IndustryType } from './industryType';
+import { Status } from './status';
 
 export interface Account {
     id: string;
     balance: number;
-    status: string;
+    status: Status;
     secretKey: string;
     userId: string;
 }

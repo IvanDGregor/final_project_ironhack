@@ -5,14 +5,16 @@ import { AuthenticationService } from '../_services';
 import { environment } from '../../environments/environment';
 import { User } from '../_models';
 import { Router } from '@angular/router';
+import { CreditCard } from '../models/creditCard';
+
 @Component({
-  selector: 'app-account-list',
-  templateUrl: './account-list.component.html',
-  styleUrls: ['./account-list.component.scss'],
+  selector: 'app-credit-card-list',
+  templateUrl: './credit-card-list.component.html',
+  styleUrls: ['./credit-card-list.component.scss']
 })
-export class AccountListComponent implements OnInit {
+export class CreditCardListComponent implements OnInit {
   loading = false;
-  accounts: Account[] = [];
+  creditcards: CreditCard[] = [];
   user: User;
   isAdmin: boolean;
 
@@ -36,14 +38,15 @@ export class AccountListComponent implements OnInit {
     console.log(this.isAdmin);
     this.loading = true;
     this.http
-      .get<Account[]>(`${environment.apiUrl}/accounts`, this.httpOptions)
+      .get<CreditCard[]>(`${environment.apiUrl}/credit-cards`, this.httpOptions)
       .subscribe((data) => {
         console.log(data);
         this.loading = false;
-        this.accounts = data;
+        this.creditcards = data;
       });
   }
   goToRoute(route: string) {
     this.router.navigate([route]);
   }
 }
+

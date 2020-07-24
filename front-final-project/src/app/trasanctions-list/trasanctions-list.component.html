@@ -1,0 +1,52 @@
+<app-layout>
+    <div class="content">
+      <div class="col-lg-6 my-auto">
+        <div class="card card-chart">
+          <div class="card-header">
+            <h5 class="card-category"></h5>
+            <h3 class="card-title">
+              <i class="tim-icons icon-single-copy-04 text-info"> </i>Transactions
+            </h3>
+          </div>
+            
+        </div>
+      </div>
+      <div class="row">
+        <table class="table table-borderless table-dark">
+          <thead>
+            <tr>
+              <th scope="col">Transaction ID</th>
+              <th scope="col">Account Sender</th>
+              <th scope="col">Account Receiver</th>
+              <th scope="col">User Id</th>
+              <th scope="col">Amount</th>
+              <th scope="col">Date</th>
+              <th scope="col">Type Transaction</th>
+            </tr>
+          </thead>
+          <tbody *ngIf="!loading">
+            <tr *ngFor="let transaction of transactions">
+              <th id="acId">{{ transaction.id }}</th>
+              <td>{{ transaction.accountSenderId  }}</td>
+              <td>{{ transaction.accountReceiverId  }}</td>
+              <td>{{ transaction.userId }}</td>
+              <td>{{ transaction.amount }}</td>
+              <td>{{ transaction.date }}</td>
+              <td>{{ transaction.typeTransaction }}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="row justify-content-center" *ngIf="loading">
+        <div
+          div
+          class="spinner-grow"
+          style="width: 5rem; height: 5rem;"
+          role="status"
+        >
+          <span class="sr-only">Loading...</span>
+        </div>
+      </div>
+    </div>
+  </app-layout>
+  

@@ -10,4 +10,5 @@ public interface TransactionControllerInterface {
     public void transfer(TransferDTO transferDTO);
     public void payment(PaymentDTO paymentDTO);
     public List<Transaction> findAllByUserId(String userId);
+    public List<Transaction> findAll();
 }

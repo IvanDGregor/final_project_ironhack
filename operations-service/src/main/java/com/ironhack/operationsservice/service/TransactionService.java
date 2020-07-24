@@ -17,6 +17,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
+import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.util.List;
 
@@ -38,17 +39,20 @@ public class TransactionService {
         Account accountReceiver = accountRepository.findById(transferDTO.getAccountReceiverId()).orElseThrow(() -> new AccountNotFoundException("There's no reciever account with provided ID"));
         if (accountReceiver.getStatus() == Status.FROZEN) throw new FraudDetectionException("The account receiver is blocked");
         if(transferDTO.getSecret_key().equals(accountSender.getSecret_key())){
-            if(transferDTO.getAmount().compareTo(accountSender.getBalance()) <= 0 ){
+            if(transferDTO.getAmount().compareTo(accountSender.getBalance()) <= 0){
                 accountSender.setBalance(accountSender.getBalance().subtract(transferDTO.getAmount()));
                 accountReceiver.setBalance(accountReceiver.getBalance().add(transferDTO.getAmount()));
                 accountRepository.save(accountSender);
                 accountRepository.save(accountReceiver);
                 Transaction transaction = new Transaction(transferDTO.getAccountSenderId(),transferDTO.getAccountReceiverId(),accountSender.getUserId(),transferDTO.getAmount(), LocalDateTime.now(), TypeTransaction.TRANSFER);
                 transactionRepository.save(transaction);
+            }else{
+                throw new FraudDetectionException("Not enough balance in the account");
             }
-            throw new FraudDetectionException("Not enough balance in the account");
         }
-        throw new FraudDetectionException("Invalid Secret Key");
+        else{
+            throw new FraudDetectionException("Invalid Secret Key");
+        }
     }
     @Transactional
     public void payment(PaymentDTO paymentDTO){
@@ -72,5 +76,12 @@ public class TransactionService {
      */
    public List<Transaction> findAllByUserId(String userId) {
         return transactionRepository.findAllByUserId(userId);
+    }
+
+    /**
+     * This method return all list of transactions
+     */
+    public List<Transaction> findAll() {
+        return transactionRepository.findAll();
     }
 }

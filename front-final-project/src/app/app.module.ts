@@ -27,6 +27,13 @@ import { ProductReportComponent } from './product-report/product-report.componen
 import { StatsReportComponent } from './stats-report/stats-report.component';
 import { ToastrModule } from 'ngx-toastr';
 import { DashboardComponent } from './dashboard/dashboard.component';
+import { CreateUserComponent } from './create-user/create-user.component';
+import { CreateAccountComponent } from './create-account/create-account.component';
+import { TrasanctionsListComponent } from './trasanctions-list/trasanctions-list.component';
+import { CreateCreditCardComponent } from './create-credit-card/create-credit-card.component';
+import { CreditCardListComponent } from './credit-card-list/credit-card-list.component';
+import { OperationsComponent } from './operations/operations.component';
+import { CreateTransferComponent } from './create-transfer/create-transfer.component';
 
 @NgModule({
   declarations: [
@@ -50,6 +57,13 @@ import { DashboardComponent } from './dashboard/dashboard.component';
     ProductReportComponent,
     StatsReportComponent,
     DashboardComponent,
+    CreateUserComponent,
+    CreateAccountComponent,
+    TrasanctionsListComponent,
+    CreateCreditCardComponent,
+    CreditCardListComponent,
+    OperationsComponent,
+    CreateTransferComponent,
   ],
   imports: [
     BrowserModule,

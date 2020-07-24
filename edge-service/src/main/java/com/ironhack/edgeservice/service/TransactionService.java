@@ -67,4 +67,17 @@ public class TransactionService {
         throw new OperationsClientNotWorkingException("operations-service not available!");
     }
 
+    /**
+     * This method return all list of transactions
+     */
+    @HystrixCommand(fallbackMethod = "findAllNotAvailable")
+    public List<Transaction> findAll() {
+        String operationToken = "Bearer " + jwtUtil.generateToken("operations-service");
+        return operationClient.findAll(operationToken);
+    }
+
+    public List<Transaction> findAllNotAvailable() {
+        throw new OperationsClientNotWorkingException("operations-service not available!");
+    }
+
 }

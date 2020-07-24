@@ -1,18 +1,21 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpHeaders, HttpClient } from '@angular/common/http';
-import { Account } from '../models/account';
+import { Contact } from '../models/contact';
 import { AuthenticationService } from '../_services';
-import { environment } from '../../environments/environment';
+import { environment } from 'src/environments/environment';
 import { User } from '../_models';
 import { Router } from '@angular/router';
+import { Transaction } from '../models/transaction';
+
 @Component({
-  selector: 'app-account-list',
-  templateUrl: './account-list.component.html',
-  styleUrls: ['./account-list.component.scss'],
+  selector: 'app-trasanctions-list',
+  templateUrl: './trasanctions-list.component.html',
+  styleUrls: ['./trasanctions-list.component.scss']
 })
-export class AccountListComponent implements OnInit {
+export class TrasanctionsListComponent implements OnInit {
+
   loading = false;
-  accounts: Account[] = [];
+  transactions: Transaction[] = [];
   user: User;
   isAdmin: boolean;
 
@@ -36,14 +39,15 @@ export class AccountListComponent implements OnInit {
     console.log(this.isAdmin);
     this.loading = true;
     this.http
-      .get<Account[]>(`${environment.apiUrl}/accounts`, this.httpOptions)
+      .get<Transaction[]>(`${environment.apiUrl}/transactions`, this.httpOptions)
       .subscribe((data) => {
-        console.log(data);
         this.loading = false;
-        this.accounts = data;
+        console.log(data);
+        this.transactions = data;
       });
   }
   goToRoute(route: string) {
     this.router.navigate([route]);
   }
 }
+

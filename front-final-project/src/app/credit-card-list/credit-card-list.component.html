@@ -1,0 +1,56 @@
+<app-layout>
+    <div class="content">
+      <div class="col-lg-6 my-auto">
+        <div class="card card-chart">
+          <div class="card-header">
+            <h5 class="card-category"></h5>
+            <h3 class="card-title">
+              <i class="tim-icons icon-credit-card text-info"> </i>Credit Cards
+              <div class="text-center">
+                <button
+                  id="singlebutton"
+                  name="singlebutton"
+                  class="btn btn-danger"
+                  (click)="goToRoute('/create-credit-card')"
+                >
+                  Create New Credit Card
+                </button>
+              </div>
+            </h3>
+          </div>
+            
+        </div>
+      </div>
+      <div class="row">
+        <table class="table table-borderless table-dark">
+          <thead>
+            <tr>
+              <th scope="col">Credit Card ID</th>
+              <th scope="col">PIN</th>
+              <th scope="col">User ID</th>
+              <th scope="col">Status</th>
+            </tr>
+          </thead>
+          <tbody *ngIf="!loading">
+            <tr *ngFor="let creditcard of creditcards">
+              <th id="acId">{{ creditcard.id }}</th>
+              <td>{{ creditcard.pin }}</td>
+              <td>{{ creditcard.userId }}</td>
+              <td>{{ creditcard.status }}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="row justify-content-center" *ngIf="loading">
+        <div
+          div
+          class="spinner-grow"
+          style="width: 5rem; height: 5rem;"
+          role="status"
+        >
+          <span class="sr-only">Loading...</span>
+        </div>
+      </div>
+    </div>
+  </app-layout>
+  

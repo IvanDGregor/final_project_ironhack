@@ -31,17 +31,24 @@ export const ROUTES: RouteInfo[] = [
     class: '',
   },
   {
-    path: '/leads',
-    title: 'Operations',
+    path: '/credit-cards',
+    title: 'Credit Cards',
     rtlTitle: 'الرموز',
-    icon: 'icon-atom',
+    icon: 'icon-credit-card',
     class: '',
   },
   {
-    path: '/opportunities',
+    path: '/operations',
+    title: 'Operations',
+    rtlTitle: 'الرموز',
+    icon: 'icon-tap-02',
+    class: '',
+  },
+  {
+    path: '/transactions',
     title: 'Tranactions',
     rtlTitle: 'خرائط',
-    icon: 'icon-spaceship',
+    icon: 'icon-single-copy-04',
     class: '',
   }
 ];

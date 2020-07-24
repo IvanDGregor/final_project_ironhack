@@ -7,7 +7,7 @@ import java.time.LocalDateTime;
 
 public class Transaction {
 
-    private String id;
+    private Integer id;
 
     private String accountSenderId;
 
@@ -33,11 +33,11 @@ public class Transaction {
         this.typeTransaction = typeTransaction;
     }
 
-    public String getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 

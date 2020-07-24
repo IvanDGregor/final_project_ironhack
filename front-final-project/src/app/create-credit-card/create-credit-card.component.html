@@ -1,0 +1,110 @@
+<app-layout>
+    <div class="content">
+      <div class="row">
+        <div class="col-md-8">
+          <div class="card">
+            <div class="card-header"><h5 class="title">Create New Lead</h5></div>
+  
+            <div class="card-body">
+              <form [formGroup]="creditCardForm" (ngSubmit)="onSubmit()">
+                <label>Information Credit Card</label>
+                <div class="row">
+                  <div class="col-md-5 pr-md-1">
+                    <div class="form-group">
+                      <label>Credit Card ID</label>
+                      <input
+                        class="form-control {{
+                          this.creditCardForm.get('id')?.errors ? 'is-invalid' : ''
+                        }}"
+                        placeholder="ex: 1111222233334444"
+                        type="text"
+                        formControlName="id"
+                      />
+                    </div>
+                  </div>
+                  <div class="col-md-3 px-md-1">
+                    <div class="form-group">
+                      <label> PIN </label>
+                      <input
+                        class="form-control {{
+                          this.creditCardForm.get('pin')?.errors ? 'is-invalid' : ''
+                        }}"
+                        placeholder="ex: *****"
+                        type="password"
+                        formControlName="pin"
+                      />
+                    </div>
+                  </div>
+                  <div class="col-md-4 pl-md-1">
+                    <div class="form-group">
+                      <label> User ID </label>
+                      <input
+                        class="form-control {{
+                          this.creditCardForm.get('userId')?.errors ? 'is-invalid' : ''
+                        }}"
+                        placeholder="ex: 12345678A"
+                        type="text"
+                        formControlName="userId"
+                      />
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-md-6 pl-md-1">
+                    <div class="form-group">
+                      <label> Status </label>
+                      <select
+                        class="form-control {{
+                          this.creditCardForm.get('status')?.errors
+                            ? 'is-invalid'
+                            : ''
+                        }}"
+                        placeholder="ACTIVE or FROZEN"
+                        type="text"
+                        formControlName="status"
+                      >
+                      <option [value]="activeStatus">ACTIVE</option>
+                      <option [value]="frozenStatus">FROZEN</option>
+                      </select>
+                    </div>
+                  </div>
+                </div>
+                <div class="card-footer">
+                  <button
+                    [disabled]="!isValid"
+                    class="btn btn-fill btn-danger"
+                    type="submit"
+                  >
+                    Save
+                  </button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="card card-user">
+            <div class="card-body">
+              <p class="card-text"></p>
+              <div class="author">
+                <p class="description">Create Credit Card</p>
+              </div>
+              <div class="card-description">
+                To create credit card this is the information you need to include:
+                <br />
+                - Credit Card ID
+                <br />
+                - PIN
+                <br />
+                - User Id associated to te credit card
+                <br />
+                - Status
+              </div>
+            </div>
+            <div class="card-footer"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </app-layout>
+  

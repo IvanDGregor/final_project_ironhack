@@ -11,13 +11,20 @@ import { ConvertLeadComponent } from './convert-lead/convert-lead.component';
 import { CreateLeadComponent } from './create-lead/create-lead.component';
 import { CreateSalesrepComponent } from './create-salesrep/create-salesrep.component';
 import { AuthGuard } from './_helpers';
-import { SalesrepReportComponent } from './salesrep-report/salesrep-report.component';
 import { ProductReportComponent } from './product-report/product-report.component';
 import { IndustryReportComponent } from './industry-report/industry-report.component';
 import { CountryReportComponent } from './country-report/country-report.component';
 import { CityReportComponent } from './city-report/city-report.component';
 import { StatsReportComponent } from './stats-report/stats-report.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
+import { CreateUserComponent } from './create-user/create-user.component';
+import { SalesrepReportComponent } from './salesrep-report/salesrep-report.component';
+import { CreateAccountComponent } from './create-account/create-account.component';
+import { CreateCreditCardComponent } from './create-credit-card/create-credit-card.component';
+import { CreditCardListComponent } from './credit-card-list/credit-card-list.component';
+import { TrasanctionsListComponent } from './trasanctions-list/trasanctions-list.component';
+import { OperationsComponent } from './operations/operations.component';
+import { CreateTransferComponent } from './create-transfer/create-transfer.component';
 const routes: Routes = [
   {
     path: '',
@@ -62,6 +69,24 @@ const routes: Routes = [
     canActivate: [AuthGuard],
   },
   {
+    path: 'credit-cards',
+    component: CreditCardListComponent,
+    pathMatch: 'full',
+    canActivate: [AuthGuard],
+  },
+  {
+    path: 'transactions',
+    component: TrasanctionsListComponent,
+    pathMatch: 'full',
+    canActivate: [AuthGuard],
+  },
+  {
+    path: 'operations',
+    component: OperationsComponent,
+    pathMatch: 'full',
+    canActivate: [AuthGuard],
+  },
+  {
     path: 'create',
     component: CreateFormComponent,
     pathMatch: 'full',
@@ -70,6 +95,30 @@ const routes: Routes = [
   {
     path: 'create-lead',
     component: CreateLeadComponent,
+    pathMatch: 'full',
+    canActivate: [AuthGuard],
+  },
+  {
+    path: 'create-user',
+    component: CreateUserComponent,
+    pathMatch: 'full',
+    canActivate: [AuthGuard],
+  },
+  {
+    path: 'create-transfer',
+    component: CreateTransferComponent,
+    pathMatch: 'full',
+    canActivate: [AuthGuard],
+  },
+  {
+    path: 'create-account',
+    component: CreateAccountComponent,
+    pathMatch: 'full',
+    canActivate: [AuthGuard],
+  },
+  {
+    path: 'create-credit-card',
+    component: CreateCreditCardComponent,
     pathMatch: 'full',
     canActivate: [AuthGuard],
   },

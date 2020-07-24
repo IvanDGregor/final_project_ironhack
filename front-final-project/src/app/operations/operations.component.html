@@ -1,0 +1,30 @@
+<app-layout>
+    <div class="content">
+      <div class="row full-custom-heigth">
+        <div class="col-lg-6 my-auto">
+          <div class="card card-chart">
+            <div class="card-header">
+              <h5 class="card-category"></h5>
+              <h3 class="card-title">
+                <i class="tim-icons icon-send text-danger-states"> </i>New Transfer
+              </h3>
+            </div>
+            <div class="card-body">
+              <div class="text-center">
+                <button
+                  id="singlebutton"
+                  name="singlebutton"
+                  class="btn btn-danger"
+                  (click)="goToRoute('/create-transfer')"
+                  [disabled]="!isAdmin"
+                >
+                  Create New Transfer
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </app-layout>
+  

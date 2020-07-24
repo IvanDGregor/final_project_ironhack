@@ -46,4 +46,14 @@ public class TransactionControllerImpl {
     public List<Transaction> findAllByUserId(@PathVariable String userId){
         return transactionService.findAllByUserId(userId);
     }
+
+    /**
+     * Finds a all Transaction by User Id.
+     * @return Returns all Transaction by User Id.
+     */
+    @GetMapping("/transactions")
+    @ResponseStatus(HttpStatus.OK)
+    public List<Transaction> findAll(){
+        return transactionService.findAll();
+    }
 }

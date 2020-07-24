@@ -1,0 +1,95 @@
+<app-layout>
+  <div class="content">
+    <div class="row">
+      <div class="col-md-8">
+        <div class="card">
+          <div class="card-header">
+            <h5 class="title">Create New Sales Rep</h5>
+          </div>
+
+          <div class="card-body">
+            <form [formGroup]="salesRepForm" (ngSubmit)="onSubmit()">
+              <label>Information Contact</label>
+              <div class="row">
+                <div class="col-md-5 pr-md-1">
+                  <div class="form-group">
+                    <label>Name</label>
+                    <input
+                      class="form-control {{
+                        this.salesRepForm.get('name')?.errors
+                          ? 'is-invalid'
+                          : ''
+                      }}"
+                      placeholder="Jhon Doe"
+                      type="text"
+                      formControlName="name"
+                    />
+                  </div>
+                </div>
+                <div class="col-md-3 px-md-1">
+                  <div class="form-group">
+                    <label> Phone Number </label>
+                    <input
+                      class="form-control {{
+                        this.salesRepForm.get('phone')?.errors
+                          ? 'is-invalid'
+                          : ''
+                      }}"
+                      placeholder="654234321"
+                      type="text"
+                      formControlName="phone"
+                    />
+                  </div>
+                </div>
+                <div class="col-md-4 pl-md-1">
+                  <div class="form-group">
+                    <label for="exampleInputEmail1"> Email address </label>
+                    <input
+                      class="form-control {{
+                        this.salesRepForm.get('email')?.errors
+                          ? 'is-invalid'
+                          : ''
+                      }}"
+                      placeholder="mike@email.com"
+                      type="email"
+                      formControlName="email"
+                    />
+                  </div>
+                </div>
+              </div>
+              <div class="card-footer">
+                <button
+                  [disabled]="!isValid"
+                  class="btn btn-fill btn-danger"
+                  type="submit"
+                >
+                  Save
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="card card-user">
+          <div class="card-body">
+            <p class="card-text"></p>
+            <div class="author">
+              <p class="description">Create Sales-Reps</p>
+            </div>
+            <div class="card-description">
+              To create SalesRep this is the information you need to include:
+              <br />
+              - Name
+              <br />
+              - Phone Number
+              <br />
+              - Email
+            </div>
+          </div>
+          <div class="card-footer"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</app-layout>

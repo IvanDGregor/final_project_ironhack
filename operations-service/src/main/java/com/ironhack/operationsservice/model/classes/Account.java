@@ -40,12 +40,14 @@ public class Account {
 
     /**
      * Constructor
+     * @param id Recevies the Account's id
      * @param secret_key Receives the Account's secret key
      * @param balance Receives the Account's balance
      * @param userId Receives the Account's user id associated to account
      * Status set ACTIVE for default
      */
-    public Account(String secret_key, BigDecimal balance, String userId) {
+    public Account(String id, String secret_key, BigDecimal balance, String userId) {
+        this.id = id;
         this.secret_key = secret_key;
         this.userId = userId;
         this.balance = balance;

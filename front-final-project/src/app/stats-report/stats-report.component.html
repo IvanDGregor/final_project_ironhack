@@ -1,0 +1,291 @@
+<app-layout>
+  <div class="content">
+    <div class="row">
+      <h3 class="card-title">
+        <i class="tim-icons icon-badge text-info"> </i> Employee Count
+      </h3>
+    </div>
+    <div class="row">
+      <div class="col-lg-3">
+        <div class="card">
+          <div class="card-header">
+            <h3 class="card-title">
+              <i class="tim-icons icon-minimal-down text-info"> </i> Min
+            </h3>
+          </div>
+          <div class="card-body">
+            <h4 class="card-text text-center">
+              {{ employeeCount?.min }}
+              <div
+                *ngIf="employeeCount.min == null"
+                div
+                class="spinner-grow"
+                role="status"
+              >
+                <span class="sr-only">Loading...</span>
+              </div>
+            </h4>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-3">
+        <div class="card">
+          <div class="card-header">
+            <h3 class="card-title">
+              <i class="tim-icons icon-minimal-up text-info"> </i> Max
+            </h3>
+          </div>
+          <div class="card-body">
+            <h4 class="card-text text-center">
+              {{ employeeCount?.max }}
+              <div
+                *ngIf="employeeCount.max == null"
+                div
+                class="spinner-grow"
+                role="status"
+              >
+                <span class="sr-only">Loading...</span>
+              </div>
+            </h4>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-3">
+        <div class="card">
+          <div class="card-header">
+            <h3 class="card-title">
+              <i class="tim-icons icon-chart-bar-32 text-info"></i> Median
+            </h3>
+          </div>
+          <div class="card-body">
+            <h4 class="card-text text-center">
+              {{ employeeCount?.median }}
+              <div
+                *ngIf="employeeCount.median == null"
+                div
+                class="spinner-grow"
+                role="status"
+              >
+                <span class="sr-only">Loading...</span>
+              </div>
+            </h4>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-3">
+        <div class="card">
+          <div class="card-header">
+            <h3 class="card-title">
+              <i class="tim-icons icon-sound-wave text-info"> </i> Mean
+            </h3>
+          </div>
+          <div class="card-body">
+            <h4 class="card-text text-center">
+              {{ employeeCount?.mean }}
+              <div
+                *ngIf="employeeCount.mean == null"
+                div
+                class="spinner-grow"
+                role="status"
+              >
+                <span class="sr-only">Loading...</span>
+              </div>
+            </h4>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <h3 class="card-title">
+        <i class="tim-icons icon-spaceship text-info"> </i> Opportunities
+        associated with Account
+      </h3>
+    </div>
+    <div class="row">
+      <div class="col-lg-3">
+        <div class="card">
+          <div class="card-header">
+            <h3 class="card-title">
+              <i class="tim-icons icon-minimal-down text-info"> </i> Min
+            </h3>
+          </div>
+          <div class="card-body">
+            <h4 class="card-text text-center">
+              {{ oppsPerAccount?.min }}
+              <div
+                *ngIf="oppsPerAccount.min == null"
+                div
+                class="spinner-grow"
+                role="status"
+              >
+                <span class="sr-only">Loading...</span>
+              </div>
+            </h4>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-3">
+        <div class="card">
+          <div class="card-header">
+            <h3 class="card-title">
+              <i class="tim-icons icon-minimal-up text-info"> </i> Max
+            </h3>
+          </div>
+          <div class="card-body">
+            <h4 class="card-text text-center">
+              {{ oppsPerAccount?.max }}
+              <div
+                *ngIf="oppsPerAccount.max == null"
+                div
+                class="spinner-grow"
+                role="status"
+              >
+                <span class="sr-only">Loading...</span>
+              </div>
+            </h4>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-3">
+        <div class="card">
+          <div class="card-header">
+            <h3 class="card-title">
+              <i class="tim-icons icon-chart-bar-32 text-info"></i> Median
+            </h3>
+          </div>
+          <div class="card-body">
+            <h4 class="card-text text-center">
+              {{ oppsPerAccount?.median }}
+              <div
+                *ngIf="oppsPerAccount.median == null"
+                div
+                class="spinner-grow"
+                role="status"
+              >
+                <span class="sr-only">Loading...</span>
+              </div>
+            </h4>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-3">
+        <div class="card">
+          <div class="card-header">
+            <h3 class="card-title">
+              <i class="tim-icons icon-sound-wave text-info"> </i> Mean
+            </h3>
+          </div>
+          <div class="card-body">
+            <h4 class="card-text text-center">
+              {{ oppsPerAccount?.mean }}
+              <div
+                *ngIf="oppsPerAccount.min == null"
+                div
+                class="spinner-grow"
+                role="status"
+              >
+                <span class="sr-only">Loading...</span>
+              </div>
+            </h4>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <h3 class="card-title">
+        <i class="tim-icons icon-delivery-fast text-info"> </i> Quantity of
+        Product
+      </h3>
+    </div>
+    <div class="row">
+      <div class="col-lg-3">
+        <div class="card">
+          <div class="card-header">
+            <h3 class="card-title">
+              <i class="tim-icons icon-minimal-down text-info"> </i> Min
+            </h3>
+          </div>
+          <div class="card-body">
+            <h4 class="card-text text-center">
+              {{ productQuantity?.min }}
+              <div
+                *ngIf="productQuantity.min == null"
+                div
+                class="spinner-grow"
+                role="status"
+              >
+                <span class="sr-only">Loading...</span>
+              </div>
+            </h4>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-3">
+        <div class="card">
+          <div class="card-header">
+            <h3 class="card-title">
+              <i class="tim-icons icon-minimal-up text-info"> </i> Max
+            </h3>
+          </div>
+          <div class="card-body">
+            <h4 class="card-text text-center">
+              {{ productQuantity?.max }}
+              <div
+                *ngIf="productQuantity.max == null"
+                div
+                class="spinner-grow"
+                role="status"
+              >
+                <span class="sr-only">Loading...</span>
+              </div>
+            </h4>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-3">
+        <div class="card">
+          <div class="card-header">
+            <h3 class="card-title">
+              <i class="tim-icons icon-chart-bar-32 text-info"></i> Median
+            </h3>
+          </div>
+          <div class="card-body">
+            <h4 class="card-text text-center">
+              {{ productQuantity?.median }}
+              <div
+                *ngIf="productQuantity.median == null"
+                div
+                class="spinner-grow"
+                role="status"
+              >
+                <span class="sr-only">Loading...</span>
+              </div>
+            </h4>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-3">
+        <div class="card">
+          <div class="card-header">
+            <h3 class="card-title">
+              <i class="tim-icons icon-sound-wave text-info"> </i> Mean
+            </h3>
+          </div>
+          <div class="card-body">
+            <h4 class="card-text text-center">
+              {{ productQuantity?.mean }}
+              <div
+                *ngIf="productQuantity.mean == null"
+                div
+                class="spinner-grow"
+                role="status"
+              >
+                <span class="sr-only">Loading...</span>
+              </div>
+            </h4>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</app-layout>

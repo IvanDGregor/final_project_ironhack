@@ -30,7 +30,7 @@ public class UserControllerImpl implements UserController {
      * Finds a User with a username param
      * @return Returns a user with a username param.
      */
-    @GetMapping("/users/{username}")
+    @GetMapping("/user/username/{username}")
     @Override
     public User getByUsername(@PathVariable(name = "username") String username) {
         return userService.getByUsername(username);

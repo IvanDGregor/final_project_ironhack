@@ -36,7 +36,7 @@ and then
 
 3. Navigate to `http://localhost:4200/`.
 
-![Photo LOGIN](images/login.png)
+![login](images/login.png)
 
 
 ## <a name="security"></a>Security

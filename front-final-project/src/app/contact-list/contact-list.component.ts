@@ -5,6 +5,7 @@ import { AuthenticationService } from '../_services';
 import { environment } from 'src/environments/environment';
 import { User } from '../_models';
 import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-contact-list',
@@ -27,6 +28,7 @@ export class ContactListComponent implements OnInit {
   };
 
   constructor(
+    private toastr: ToastrService,
     private router: Router,
     private authenticationService: AuthenticationService,
     private http: HttpClient
@@ -49,4 +51,30 @@ export class ContactListComponent implements OnInit {
   goToRoute(route: string) {
     this.router.navigate([route]);
   }
+
+  openDelete(id: string): void {
+    this.http
+      .delete<void>(
+        `${environment.apiUrl}/user/${id}`
+      )
+      .subscribe(
+        (data) => {
+          console.log('delete');
+          this.toastr.success(
+            '<span class="tim-icons icon-bell-55" [data-notify]="icon"></span> User deleted!',
+            '',
+            {
+              timeOut: 2000,
+              enableHtml: true,
+              toastClass: 'alert alert-success alert-with-icon',
+              positionClass: 'toast-top-center',
+            }
+          );
+          window.location.reload();
+        },
+        (error) => {
+          console.log('error');
+        }
+      );
+    }
 }

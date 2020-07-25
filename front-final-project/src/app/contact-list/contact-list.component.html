@@ -31,6 +31,7 @@
             <th scope="col">Password</th>
             <th scope="col">Rol</th>
             <th scope="col">Date Birth</th>
+            <th scope="col">Delete User</th>
           </tr>
         </thead>
         <tbody *ngIf="!loading">
@@ -40,6 +41,16 @@
             <td>{{ user.password }}</td>
             <td>{{ user.roles }}</td>
             <td>{{ user.dateBirth }}</td>
+            <td class="input-group">
+              <button
+                class="input-group-append"
+                (click)="openDelete(user.userId)"
+                type="button"
+                class="btn btn-danger animation-on-hover"
+              >
+                Delete
+              </button>
+            </td>
           </tr>
         </tbody>
       </table>

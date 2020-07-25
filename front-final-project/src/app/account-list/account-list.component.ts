@@ -27,6 +27,7 @@ export class AccountListComponent implements OnInit {
       Authorization: `Basic ${this.authenticationService.userValue.authdata}`,
     }),
   };
+  returnUrl: '/accounts';
 
   constructor(
     private toastr: ToastrService,
@@ -79,7 +80,8 @@ export class AccountListComponent implements OnInit {
               toastClass: 'alert alert-success alert-with-icon',
               positionClass: 'toast-top-center',
             }
-          );
+            );
+          window.location.reload();
         },
         (error) => {
           console.log('error');
@@ -105,6 +107,7 @@ export class AccountListComponent implements OnInit {
                 positionClass: 'toast-top-center',
               }
             );
+            window.location.reload();
           },
           (error) => {
             console.log('error');

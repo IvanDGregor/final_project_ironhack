@@ -29,6 +29,8 @@
               <th scope="col">PIN</th>
               <th scope="col">User ID</th>
               <th scope="col">Status</th>
+              <th scope="col">Update Status</th>
+              <th scope="col">Delete Account</th>
             </tr>
           </thead>
           <tbody *ngIf="!loading">
@@ -53,6 +55,16 @@
                   class="btn btn-outline-light"
                 >
                   Update
+                </button>
+              </td>
+              <td class="input-group">
+                <button
+                  class="input-group-append"
+                  (click)="openDelete(creditcard.id)"
+                  type="button"
+                  class="btn btn-danger animation-on-hover"
+                >
+                  Delete
                 </button>
               </td>
             </tr>

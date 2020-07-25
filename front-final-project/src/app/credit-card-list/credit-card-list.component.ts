@@ -22,6 +22,7 @@ export class CreditCardListComponent implements OnInit {
 
   active: Status = Status.Active;
   frozen: Status = Status.Frozen;
+  returnUrl: '/credit-cards';
 
   httpOptions = {
     headers: new HttpHeaders({
@@ -71,7 +72,7 @@ export class CreditCardListComponent implements OnInit {
           updatedCreditCard.status = status;
           updatedCreditCard.newStatus = undefined;
           this.toastr.success(
-            '<span class="tim-icons icon-bell-55" [data-notify]="icon"></span> Account updated!',
+            '<span class="tim-icons icon-bell-55" [data-notify]="icon"></span> Credit Card updated!',
             '',
             {
               timeOut: 2000,
@@ -80,11 +81,38 @@ export class CreditCardListComponent implements OnInit {
               positionClass: 'toast-top-center',
             }
           );
+          window.location.reload();
         },
         (error) => {
           console.log('error');
         }
       );
     }
+
+    openDelete(id: string): void {
+      this.http
+        .delete<void>(
+          `${environment.apiUrl}/credit-card/${id}`
+        )
+        .subscribe(
+          (data) => {
+            console.log('deleted');
+            window.location.reload();
+            this.toastr.success(
+              '<span class="tim-icons icon-bell-55" [data-notify]="icon"></span> Credit Card deleted!',
+              '',
+              {
+                timeOut: 2000,
+                enableHtml: true,
+                toastClass: 'alert alert-success alert-with-icon',
+                positionClass: 'toast-top-center',
+              }
+            );
+          },
+          (error) => {
+            console.log('error');
+          }
+        );
+      }
 }
 

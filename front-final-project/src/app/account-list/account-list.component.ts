@@ -86,4 +86,29 @@ export class AccountListComponent implements OnInit {
         }
       );
     }
+
+    openDelete(id: string): void {
+      this.http
+        .delete<void>(
+          `${environment.apiUrl}/account/${id}`
+        )
+        .subscribe(
+          (data) => {
+            console.log('updated');
+            this.toastr.success(
+              '<span class="tim-icons icon-bell-55" [data-notify]="icon"></span> Account deleted!',
+              '',
+              {
+                timeOut: 2000,
+                enableHtml: true,
+                toastClass: 'alert alert-success alert-with-icon',
+                positionClass: 'toast-top-center',
+              }
+            );
+          },
+          (error) => {
+            console.log('error');
+          }
+        );
+      }
 }

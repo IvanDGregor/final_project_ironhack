@@ -7,4 +7,5 @@ export interface Account {
     status: Status;
     secretKey: string;
     userId: string;
+    newStatus: Status;
 }

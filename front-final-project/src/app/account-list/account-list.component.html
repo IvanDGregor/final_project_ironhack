@@ -30,6 +30,7 @@
             <th scope="col">Status</th>
             <th scope="col">Secret Key</th>
             <th scope="col">User ID</th>
+            <th scope="col">Update Status</th>
           </tr>
         </thead>
         <tbody *ngIf="!loading">
@@ -39,6 +40,24 @@
             <td>{{ account.status }}</td>
             <td>{{ account.secretKey }}</td>
             <td>{{ account.userId }}</td>
+            <td class="input-group">
+              <select
+                [(ngModel)]="account.newStatus"
+                class="custom-select"
+                id="inputGroupSelect04"
+              >
+                <option value="{{ active }}">Active</option>
+                <option value="{{ frozen }}">Frozen</option>
+              </select>
+              <button
+                class="input-group-append"
+                (click)="openUpdate(account.id, account.balance, account.newStatus, account.secretKey, account.userId)"
+                type="button"
+                class="btn btn-outline-light"
+              >
+                Update
+              </button>
+            </td>
           </tr>
         </tbody>
       </table>

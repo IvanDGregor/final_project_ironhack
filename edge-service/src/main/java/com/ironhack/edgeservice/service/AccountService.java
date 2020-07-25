@@ -77,6 +77,7 @@ public class AccountService {
         String accountToken = "Bearer " + jwtUtil.generateToken("account-service");
         if (accountClient.findById(accountToken, id) != null) {
             System.out.println("Call client account");
+            System.out.println(account.getId() + " " + account.getBalance() + " " + account.getStatus() + " " + account.getSecretKey() + " " + account.getUserId());
             accountClient.updateAccount(accountToken, id, account);
         } else throw new AccountNotFoundException("There's no Account with id: " + account.getId());
     }

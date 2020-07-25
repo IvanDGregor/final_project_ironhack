@@ -5,6 +5,9 @@ import { AuthenticationService } from '../_services';
 import { environment } from '../../environments/environment';
 import { User } from '../_models';
 import { Router } from '@angular/router';
+import { Status } from '../models/status';
+import { ToastrService } from 'ngx-toastr';
+
 @Component({
   selector: 'app-account-list',
   templateUrl: './account-list.component.html',
@@ -15,6 +18,8 @@ export class AccountListComponent implements OnInit {
   accounts: Account[] = [];
   user: User;
   isAdmin: boolean;
+  active: Status = Status.Active;
+  frozen: Status = Status.Frozen;
 
   httpOptions = {
     headers: new HttpHeaders({
@@ -24,6 +29,7 @@ export class AccountListComponent implements OnInit {
   };
 
   constructor(
+    private toastr: ToastrService,
     private router: Router,
     private authenticationService: AuthenticationService,
     private http: HttpClient
@@ -46,4 +52,38 @@ export class AccountListComponent implements OnInit {
   goToRoute(route: string) {
     this.router.navigate([route]);
   }
+
+  openUpdate(id: string, balance: number, status: Status, secretKey: string, userId: string): void {
+    this.http
+      .put<void>(
+        `${environment.apiUrl}/account/${id}`,
+        {  id, balance, status, secretKey, userId},
+        this.httpOptions
+      )
+      .subscribe(
+        (data) => {
+          console.log('updated');
+          let updatedAccount = this.accounts.find((account) => account.id === id);
+          updatedAccount.id = id;
+          updatedAccount.balance = balance;
+          updatedAccount.status = status;
+          updatedAccount.secretKey = secretKey;
+          updatedAccount.userId = userId;
+          updatedAccount.newStatus = undefined;
+          this.toastr.success(
+            '<span class="tim-icons icon-bell-55" [data-notify]="icon"></span> Account updated!',
+            '',
+            {
+              timeOut: 2000,
+              enableHtml: true,
+              toastClass: 'alert alert-success alert-with-icon',
+              positionClass: 'toast-top-center',
+            }
+          );
+        },
+        (error) => {
+          console.log('error');
+        }
+      );
+    }
 }

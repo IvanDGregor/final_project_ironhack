@@ -86,7 +86,7 @@ export class CreateAccountComponent implements OnInit {
       .subscribe(
         (data) => {
           this.toastr.success(
-            '<span class="tim-icons icon-bell-55" [data-notify]="icon"></span> Acount created!',
+            '<span class="tim-icons icon-bell-55" [data-notify]="icon"></span> Account created!',
             '',
             {
               timeOut: 2000,

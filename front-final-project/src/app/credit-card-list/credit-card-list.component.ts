@@ -6,6 +6,8 @@ import { environment } from '../../environments/environment';
 import { User } from '../_models';
 import { Router } from '@angular/router';
 import { CreditCard } from '../models/creditCard';
+import { Status } from '../models/status';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-credit-card-list',
@@ -18,6 +20,9 @@ export class CreditCardListComponent implements OnInit {
   user: User;
   isAdmin: boolean;
 
+  active: Status = Status.Active;
+  frozen: Status = Status.Frozen;
+
   httpOptions = {
     headers: new HttpHeaders({
       'Content-Type': 'application/json',
@@ -26,6 +31,7 @@ export class CreditCardListComponent implements OnInit {
   };
 
   constructor(
+    private toastr: ToastrService,
     private router: Router,
     private authenticationService: AuthenticationService,
     private http: HttpClient
@@ -48,5 +54,37 @@ export class CreditCardListComponent implements OnInit {
   goToRoute(route: string) {
     this.router.navigate([route]);
   }
+  openUpdate(id: string, pin: string, userId: string, status: Status): void {
+    this.http
+      .put<void>(
+        `${environment.apiUrl}/credit-card/${id}`,
+        {  id, pin, userId, status},
+        this.httpOptions
+      )
+      .subscribe(
+        (data) => {
+          console.log('updated');
+          const updatedCreditCard = this.creditcards.find((creditCard) => creditCard.id === id);
+          updatedCreditCard.id = id;
+          updatedCreditCard.pin = pin;
+          updatedCreditCard.userId = userId;
+          updatedCreditCard.status = status;
+          updatedCreditCard.newStatus = undefined;
+          this.toastr.success(
+            '<span class="tim-icons icon-bell-55" [data-notify]="icon"></span> Account updated!',
+            '',
+            {
+              timeOut: 2000,
+              enableHtml: true,
+              toastClass: 'alert alert-success alert-with-icon',
+              positionClass: 'toast-top-center',
+            }
+          );
+        },
+        (error) => {
+          console.log('error');
+        }
+      );
+    }
 }
 

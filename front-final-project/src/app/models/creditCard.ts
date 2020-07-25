@@ -6,4 +6,5 @@ export interface CreditCard {
     pin: string;
     userId: string;
     status: Status;
+    newStatus: Status;
 }

@@ -37,6 +37,24 @@
               <td>{{ creditcard.pin }}</td>
               <td>{{ creditcard.userId }}</td>
               <td>{{ creditcard.status }}</td>
+              <td class="input-group">
+                <select
+                  [(ngModel)]="creditcard.newStatus"
+                  class="custom-select"
+                  id="inputGroupSelect04"
+                >
+                  <option value="{{ active }}">Active</option>
+                  <option value="{{ frozen }}">Frozen</option>
+                </select>
+                <button
+                  class="input-group-append"
+                  (click)="openUpdate(creditcard.id, creditcard.pin, creditcard.userId, creditcard.newStatus)"
+                  type="button"
+                  class="btn btn-outline-light"
+                >
+                  Update
+                </button>
+              </td>
             </tr>
           </tbody>
         </table>

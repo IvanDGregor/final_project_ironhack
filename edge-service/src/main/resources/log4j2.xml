@@ -6,19 +6,9 @@
         </Console>
         <NoSql name="databaseAppender">
             <MongoDb databaseName="global_bank" collectionName="auditing" server="127.0.0.1" port="27017" />
-        </NoSql>
-        <File name="MyFile" fileName="logs/app.log">
-            <PatternLayout>
-                <Pattern>%d %p %c{1.} [%t] %m%n</Pattern>
-            </PatternLayout>
-        </File>
-        <Async name="Async">
-            <AppenderRef ref="MyFile"/>
-        </Async>
-    </Appenders>
+        </NoSql>    </Appenders>
     <Loggers>
         <Root level="info">
-            <AppenderRef ref="Async"/>
             <AppenderRef ref="Console"/>
             <AppenderRef ref="databaseAppender"/>
         </Root>

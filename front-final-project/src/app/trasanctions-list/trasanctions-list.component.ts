@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { HttpHeaders, HttpClient } from '@angular/common/http';
 import { Contact } from '../models/contact';
 import { AuthenticationService } from '../_services';
@@ -6,6 +6,7 @@ import { environment } from 'src/environments/environment';
 import { User } from '../_models';
 import { Router } from '@angular/router';
 import { Transaction } from '../models/transaction';
+import * as jsPDF from 'jspdf';
 
 @Component({
   selector: 'app-trasanctions-list',
@@ -14,6 +15,7 @@ import { Transaction } from '../models/transaction';
 })
 export class TrasanctionsListComponent implements OnInit {
 
+  @ViewChild('htmlData') htmlData: ElementRef;
   loading = false;
   transactions: Transaction[] = [];
   user: User;
@@ -48,6 +50,23 @@ export class TrasanctionsListComponent implements OnInit {
   }
   goToRoute(route: string) {
     this.router.navigate([route]);
+  }
+
+  public downloadPDF(): void {
+    const DATA = this.htmlData.nativeElement;
+    const doc = new jsPDF('p', 'pt', 'a4');
+
+    const handleElement = {
+      '#editor'(element, renderer){
+        return true;
+      }
+    };
+    doc.fromHTML(DATA.innerHTML, 15, 15, {
+      width: 200,
+      elementHandlers: handleElement
+    });
+
+    doc.save('transactions.pdf');
   }
 }
 

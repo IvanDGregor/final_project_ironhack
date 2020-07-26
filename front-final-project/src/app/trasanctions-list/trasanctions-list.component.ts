@@ -6,6 +6,7 @@ import { environment } from 'src/environments/environment';
 import { User } from '../_models';
 import { Router } from '@angular/router';
 import { Transaction } from '../models/transaction';
+import autoTable from 'jspdf-autotable';
 import * as jsPDF from 'jspdf';
 
 @Component({
@@ -52,20 +53,9 @@ export class TrasanctionsListComponent implements OnInit {
     this.router.navigate([route]);
   }
 
-  public downloadPDF(): void {
-    const DATA = this.htmlData.nativeElement;
-    const doc = new jsPDF('p', 'pt', 'a4');
-
-    const handleElement = {
-      '#editor'(element, renderer){
-        return true;
-      }
-    };
-    doc.fromHTML(DATA.innerHTML, 15, 15, {
-      width: 200,
-      elementHandlers: handleElement
-    });
-
+  generate(): void {
+    const doc = new jsPDF();
+    autoTable(doc, { html: '#transactions' });
     doc.save('transactions.pdf');
   }
 }

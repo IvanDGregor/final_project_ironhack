@@ -17,13 +17,13 @@
       class="input-group-append"
       type="button"
       class="btn btn-danger animation-on-hover"
-      (click)="downloadPDF()"
+      (click)="generate()"
     >
       Export as PDF
     </button>
   </div>
-      <div class="row" id="htmlData" #htmlData>
-        <table class="table table-borderless table-dark">
+      <div class="row" >
+        <table class="table table-borderless table-dark" id="transactions">
           <thead>
             <tr>
               <th scope="col">Transaction ID</th>

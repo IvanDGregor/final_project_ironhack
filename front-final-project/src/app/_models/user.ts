@@ -3,7 +3,7 @@
   username: string;
   surname: string;
   password: string;
-  dateBirth: string;
+  dateBirth: Date;
   roles: any[];
   authdata?: string;
 }

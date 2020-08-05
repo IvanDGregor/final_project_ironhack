@@ -53,6 +53,21 @@ public class AccountService {
     }
 
     /**
+     * This method find all Accounts and adds in accountRepository's list
+     * @param userId a account user id
+     * @return The Account which was added in accountRepository's list match with user id param
+     */
+    @HystrixCommand(fallbackMethod = "notFindByUserIdAccount")
+    public List<Account> findByUserId(String userId) {
+        String accountToken = "Bearer " + jwtUtil.generateToken("account-service");
+        return accountClient.findByUserId(accountToken, userId);
+    }
+
+    public List<Account> notFindByUserIdAccount(String userId) {
+        throw new AccountClientNotWorkingException("account-service not available!");
+    }
+
+    /**
      * This method creates a new Account and adds in accountRepository's list
      * @param account a account object
      * @return The Account which was added in accountRepository's list

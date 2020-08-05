@@ -43,6 +43,16 @@ public class AccountController {
         return accountService.findById(account_id);
     }
     /**
+     * Finds all Accounts by user id.
+     * @param userId Receives the Accounts for searching by Param.
+     * @return Returns all Accounts matching the given user id.
+     */
+    @GetMapping("/account/user/{userId}")
+    @ResponseStatus(HttpStatus.OK)
+    public List<Account> findByUserId(@PathVariable(name = "userId") String userId) {
+        return accountService.findByUserId(userId);
+    }
+    /**
      * Create new Account
      * @param account Receives account object to create account
      * @return Returns a new Account created

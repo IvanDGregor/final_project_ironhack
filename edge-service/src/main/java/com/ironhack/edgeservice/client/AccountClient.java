@@ -12,6 +12,8 @@ public interface AccountClient {
     public List<Account> findAll(@RequestHeader(name = "Authorization") String token);
     @GetMapping("/account/{account_id}")
     public Account findById(@RequestHeader(name = "Authorization") String token, @PathVariable(name = "account_id") String account_id);
+    @GetMapping("/account/user/{userId}")
+    public List<Account> findByUserId(@RequestHeader(name = "Authorization") String token, @PathVariable(name = "userId") String userId);
     @PostMapping("/account")
     public Account createAccount(@RequestHeader(name = "Authorization") String token, @RequestBody Account account);
     @PutMapping("/account/{account_id}")

@@ -67,4 +67,13 @@ public class AccountService {
         accountFound.setStatus(null);
         accountRepository.delete(accountFound);
     }
+    /**
+     * This method get all Accounts match with user id param
+     * @param userId a String value
+     * @return All Accounts which was found
+     * @throws AccountNotFoundException if there isn't any Account whose account id doesn't matches accountId param
+     */
+    public List<Account> findByUserId(String userId) throws DataNotFoundException {
+        return accountRepository.findByUserId(userId);
+    }
 }

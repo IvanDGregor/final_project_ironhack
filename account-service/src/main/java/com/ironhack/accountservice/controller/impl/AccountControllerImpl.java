@@ -23,6 +23,7 @@ public class AccountControllerImpl implements AccountControllerInterface {
     public List<Account> findAll() {
         return accountService.findAll();
     }
+
     /**
      * Finds a Account by account id.
      * @param accountId Receives the Account for searching by Param.
@@ -33,6 +34,18 @@ public class AccountControllerImpl implements AccountControllerInterface {
     @ResponseStatus(HttpStatus.OK)
     public Account findById(@PathVariable(name = "accountId") String accountId) {
         return accountService.findById(accountId);
+    }
+
+    /**
+     * Finds all Accounts by user id.
+     * @param userId Receives the User Id for searching by Param.
+     * @return Returns a Account matching the given user id.
+     * @throws AccountNotFoundException a Exception
+     */
+    @GetMapping("/account/user/{userId}")
+    @ResponseStatus(HttpStatus.OK)
+    public List<Account> findByUserId(@PathVariable(name = "userId") String userId) {
+        return accountService.findByUserId(userId);
     }
 
     /**

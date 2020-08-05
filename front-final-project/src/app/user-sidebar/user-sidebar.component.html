@@ -1,0 +1,95 @@
+<div class="logo">
+    <a class="simple-text logo-mini">
+      <div class="logo-img">
+        <img src="./assets/img/logo_global_bank.png" />
+      </div>
+    </a>
+    <a class="simple-text logo-normal">
+      GLOBAL BANK
+    </a>
+  </div>
+  <div class="sidebar-wrapper">
+    <ul class="nav">
+      <li
+        routerLinkActive="active"
+        *ngFor="let menuItem of menuItems"
+        class="{{ menuItem.class }} nav-item"
+      >
+        <a *ngIf="menuItem.title !== 'Reports'" [routerLink]="[menuItem.path]">
+          <i class="tim-icons  {{ menuItem.icon }}"></i>
+          <p>{{ menuItem.title }}</p>
+        </a>
+        <a *ngIf="menuItem.title === 'Reports'" (click)="isClicked = !isClicked">
+          <i class="tim-icons  {{ menuItem.icon }}"></i>
+          <p>{{ menuItem.title }}</p>
+        </a>
+        <ul
+          class="overflow"
+          [hidden]="isClicked"
+          *ngIf="menuItem.title === 'Reports'"
+        >
+          <li class="nav-link">
+            <a
+              class="nav-item drop"
+              href="javascript:void(0)"
+              ngbDropdownItem
+              (click)="navigate('/report/salesrep')"
+            >
+              by Sales-Reps
+            </a>
+          </li>
+          <li class="nav-link">
+            <a
+              class="nav-item drop"
+              href="javascript:void(0)"
+              ngbDropdownItem
+              (click)="navigate('/report/product')"
+            >
+              by Product
+            </a>
+          </li>
+          <li class="nav-link">
+            <a
+              class="nav-item drop"
+              href="javascript:void(0)"
+              ngbDropdownItem
+              (click)="navigate('/report/industry')"
+            >
+              by Industry
+            </a>
+          </li>
+          <li class="nav-link">
+            <a
+              class="nav-item drop"
+              href="javascript:void(0)"
+              ngbDropdownItem
+              (click)="navigate('/report/country')"
+            >
+              by Country
+            </a>
+          </li>
+          <li class="nav-link">
+            <a
+              class="nav-item drop"
+              href="javascript:void(0)"
+              ngbDropdownItem
+              (click)="navigate('/report/city')"
+            >
+              by City
+            </a>
+          </li>
+          <li class="nav-link">
+            <a
+              class="nav-item drop"
+              href="javascript:void(0)"
+              ngbDropdownItem
+              (click)="navigate('/report/stats')"
+            >
+              Stats
+            </a>
+          </li>
+        </ul>
+      </li>
+    </ul>
+  </div>
+  

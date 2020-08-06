@@ -101,6 +101,13 @@ public class AccountControllerImplTest {
     }
 
     @Test
+    void findByUserId() throws Exception {
+        MvcResult result = mockMvc.perform(MockMvcRequestBuilders.get("/account/user/" + account1.getUserId()).header("Authorization", token))
+                .andExpect(status().isOk()).andReturn();
+        assertTrue(result.getResponse().getContentAsString().contains("12345678A"));
+    }
+
+    @Test
     void findByIdException() {
         assertThrows(AccountNotFoundException.class, () -> {
             accountController.findById("AAAAA");

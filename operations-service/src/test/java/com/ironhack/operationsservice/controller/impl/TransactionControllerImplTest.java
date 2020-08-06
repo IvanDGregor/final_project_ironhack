@@ -1,4 +1,4 @@
-package com.ironhack.operationsservice.controller;
+package com.ironhack.operationsservice.controller.impl;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.ironhack.operationsservice.model.classes.Account;
@@ -13,6 +13,7 @@ import com.ironhack.operationsservice.repository.CreditCardRepository;
 import com.ironhack.operationsservice.repository.TransactionRepository;
 import com.ironhack.operationsservice.service.TransactionService;
 import com.ironhack.operationsservice.util.JwtUtil;
+import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -101,6 +102,13 @@ public class TransactionControllerImplTest {
 
     }
 
+    @AfterEach
+    void tearDown() {
+        accountRepository.deleteAll();
+        creditCardRepository.deleteAll();
+        transactionRepository.deleteAll();
+    }
+
     @Test
     public void connectionTry_NoTokenSent_Forbidden() throws Exception {
         mockMvc.perform(get("/transactions/1234567A"))
@@ -119,16 +127,21 @@ public class TransactionControllerImplTest {
         mockMvc.perform(put("/transaction/transfer").header("Authorization", token)
                 .content(objectMapper.writeValueAsString(transferDTO1))
                 .contentType(MediaType.APPLICATION_JSON))
-                .andExpect(status().isOk());
+                .andExpect(status().isNoContent());
     }
 
     @Test
     void payment()throws Exception {
-        paymentDTO1 = new PaymentDTO("111122223333","1234",new BigDecimal("300"));
+        paymentDTO1 = new PaymentDTO("111122223333","1234",new BigDecimal("30"));
         mockMvc.perform(put("/transaction/payment").header("Authorization", token)
                 .content(objectMapper.writeValueAsString(paymentDTO1))
                 .contentType(MediaType.APPLICATION_JSON))
-                .andExpect(status().isOk());
+                .andExpect(status().isNoContent());
     }
 
+    @Test
+    void findAll() throws Exception{
+        mockMvc.perform(MockMvcRequestBuilders.get("/transactions").header("Authorization", token))
+                .andExpect(status().isOk());
+    }
 }

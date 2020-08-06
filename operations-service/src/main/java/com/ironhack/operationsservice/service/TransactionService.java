@@ -67,7 +67,9 @@ public class TransactionService {
             Transaction transaction = new Transaction(account.getId(),creditCard.getId(),creditCard.getUserId(),paymentDTO.getAmount(), LocalDateTime.now(), TypeTransaction.CREDITCARD);
             transactionRepository.save(transaction);
         }
-        throw new FraudDetectionException("Not enough balance in the account");
+        else {
+            throw new FraudDetectionException("Not enough balance in the account");
+        }
     }
 
     /**

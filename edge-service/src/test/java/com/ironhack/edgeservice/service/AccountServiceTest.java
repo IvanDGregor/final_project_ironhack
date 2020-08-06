@@ -71,6 +71,20 @@ class AccountServiceTest {
 
     @Test
     @WithMockUser(roles = {"ADMIN"})
+    void findByUserId() {
+        when(accountClient.findByUserId(Mockito.anyString(), Mockito.anyString())).thenReturn(accountList2);
+        assertEquals(accountList2, accountService.findByUserId("12345678A"));
+    }
+
+    @Test
+    @WithMockUser(roles = {"ADMIN"})
+    void notFindByUserId() {
+        when(accountClient.findByUserId(Mockito.anyString(), Mockito.anyString())).thenThrow(FeignException.FeignClientException.class);
+        assertThrows(AccountClientNotWorkingException.class, () -> {accountService.findByUserId("12345678A");});
+    }
+
+    @Test
+    @WithMockUser(roles = {"ADMIN"})
     void createAccount() {
         when(accountClient.createAccount(Mockito.anyString(), Mockito.any(Account.class))).thenReturn(account1);
         assertEquals(account1, accountService.createAccount(account1));

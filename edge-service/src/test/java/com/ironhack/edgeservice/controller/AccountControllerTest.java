@@ -69,6 +69,7 @@ class AccountControllerTest {
 
         when(userService.loadUserByUsername("user")).thenReturn(user);
         when(accountService.findAll()).thenReturn(new ArrayList<>());
+        when(accountService.findByUserId("12345678A")).thenReturn(new ArrayList<>());
         when(accountService.findById("ES4500")).thenReturn(account);
         when(accountService.createAccount(new Account())).thenReturn(new Account());
         doNothing().when(accountService).updateAccount(any(String.class), any(Account.class));
@@ -94,6 +95,14 @@ class AccountControllerTest {
                 .andExpect(status().isOk())
                 .andReturn().getResponse().getContentAsString();
         assertTrue(result.contains("12345678A"));
+    }
+
+    @Test
+    void findByUserId() throws Exception{
+        String result = mockMvc.perform(get("/account/user/12345678A").with(user(user)))
+                .andExpect(status().isOk())
+                .andReturn().getResponse().getContentAsString();
+        assertTrue(result.contains("[]"));
     }
 
     @Test

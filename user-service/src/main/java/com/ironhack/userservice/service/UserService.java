@@ -84,7 +84,7 @@ public class UserService {
      * @throws DataNotFoundException if there isn't a lead whose id attribute doesn't match with id param
      */
     public void deleteUserById(String id) throws DataNotFoundException {
-        User userFound = userRepository.findById(id).orElseThrow(() -> new DataNotFoundException("Could not find that lead."));
+        User userFound = userRepository.findById(id).orElseThrow(() -> new DataNotFoundException("Could not find that user."));
         userFound.setUsername(null);
         userFound.setSurname(null);
         userFound.setDate_birth(null);

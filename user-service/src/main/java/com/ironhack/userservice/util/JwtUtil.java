@@ -27,21 +27,9 @@ public class JwtUtil {
         return claimsResolver.apply(claims);
     }
 
-    /*
-    public Date extractExpiration(String token) {
-        return extractClaim(token, Claims::getExpiration);
-    }
-     */
-
     public String extractApplicationName(String token) {
         return extractClaim(token, Claims::getSubject);
     }
-
-    /*
-    public Boolean isTokenExpired(String token) {
-        return extractExpiration(token).before(new Date());
-    }
-     */
 
     public String generateToken(String appName) {
         return createToken(appName);

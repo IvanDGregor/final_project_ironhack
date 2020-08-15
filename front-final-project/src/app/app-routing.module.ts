@@ -15,6 +15,9 @@ import { OperationsComponent } from './operations/operations.component';
 import { CreateTransferComponent } from './create-transfer/create-transfer.component';
 import { UserDashboardComponent } from './user-dashboard/user-dashboard.component';
 import { UsersListComponent } from './users-list/users-list.component';
+import { UserAccountsComponent } from './user-accounts/user-accounts.component';
+import { UserTransactionsComponent } from './user-transactions/user-transactions.component';
+import { UserCreditCardsComponent } from './user-credit-cards/user-credit-cards.component';
 const routes: Routes = [
   {
     path: '',
@@ -37,6 +40,24 @@ const routes: Routes = [
   {
     path: 'users',
     component: UsersListComponent,
+    pathMatch: 'full',
+    canActivate: [AuthGuard],
+  },
+  {
+    path: 'user-accounts',
+    component: UserAccountsComponent,
+    pathMatch: 'full',
+    canActivate: [AuthGuard],
+  },
+  {
+    path: 'user-transactions',
+    component: UserTransactionsComponent,
+    pathMatch: 'full',
+    canActivate: [AuthGuard],
+  },
+  {
+    path: 'user-credit-cards',
+    component: UserCreditCardsComponent,
     pathMatch: 'full',
     canActivate: [AuthGuard],
   },

@@ -25,6 +25,9 @@ import { CreateTransferComponent } from './create-transfer/create-transfer.compo
 import { UserSidebarComponent } from './user-sidebar/user-sidebar.component';
 import { UserDashboardComponent } from './user-dashboard/user-dashboard.component';
 import { UsersListComponent } from './users-list/users-list.component';
+import { UserAccountsComponent } from './user-accounts/user-accounts.component';
+import { UserTransactionsComponent } from './user-transactions/user-transactions.component';
+import { UserCreditCardsComponent } from './user-credit-cards/user-credit-cards.component';
 
 @NgModule({
   declarations: [
@@ -46,6 +49,9 @@ import { UsersListComponent } from './users-list/users-list.component';
     UserSidebarComponent,
     UserDashboardComponent,
     UsersListComponent,
+    UserAccountsComponent,
+    UserTransactionsComponent,
+    UserCreditCardsComponent,
   ],
   imports: [
     BrowserModule,

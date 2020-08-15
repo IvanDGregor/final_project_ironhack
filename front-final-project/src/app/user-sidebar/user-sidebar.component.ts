@@ -17,14 +17,14 @@ export const ROUTES: RouteInfo[] = [
     class: '',
   },
   {
-    path: '/accounts',
+    path: '/user-accounts',
     title: 'Accounts',
     rtlTitle: 'إخطارات',
     icon: 'icon-chart-bar-32',
     class: '',
   },
   {
-    path: '/credit-cards',
+    path: '/user-credit-cards',
     title: 'Credit Cards',
     rtlTitle: 'الرموز',
     icon: 'icon-credit-card',
@@ -38,7 +38,7 @@ export const ROUTES: RouteInfo[] = [
     class: '',
   },
   {
-    path: '/transactions',
+    path: '/user-transactions',
     title: 'Tranactions',
     rtlTitle: 'خرائط',
     icon: 'icon-single-copy-04',

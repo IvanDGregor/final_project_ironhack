@@ -11,7 +11,6 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { CreateFormComponent } from './create-form/create-form.component';
 import { LoginComponent } from './login/login.component';
 import { LayoutComponent } from './layout/layout.component';
-import { ContactListComponent } from './contact-list/contact-list.component';
 import { AccountListComponent } from './account-list/account-list.component';
 import { BasicAuthInterceptor, ErrorInterceptor } from './_helpers';
 import { ToastrModule } from 'ngx-toastr';
@@ -25,6 +24,7 @@ import { OperationsComponent } from './operations/operations.component';
 import { CreateTransferComponent } from './create-transfer/create-transfer.component';
 import { UserSidebarComponent } from './user-sidebar/user-sidebar.component';
 import { UserDashboardComponent } from './user-dashboard/user-dashboard.component';
+import { UsersListComponent } from './users-list/users-list.component';
 
 @NgModule({
   declarations: [
@@ -34,7 +34,6 @@ import { UserDashboardComponent } from './user-dashboard/user-dashboard.componen
     CreateFormComponent,
     LoginComponent,
     LayoutComponent,
-    ContactListComponent,
     AccountListComponent,
     DashboardComponent,
     CreateUserComponent,
@@ -46,6 +45,7 @@ import { UserDashboardComponent } from './user-dashboard/user-dashboard.componen
     CreateTransferComponent,
     UserSidebarComponent,
     UserDashboardComponent,
+    UsersListComponent,
   ],
   imports: [
     BrowserModule,

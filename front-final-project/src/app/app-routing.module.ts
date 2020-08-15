@@ -3,7 +3,6 @@ import { Routes, RouterModule } from '@angular/router';
 import { AppComponent } from './app.component';
 import { CreateFormComponent } from './create-form/create-form.component';
 import { LoginComponent } from './login/login.component';
-import { ContactListComponent } from './contact-list/contact-list.component';
 import { AccountListComponent } from './account-list/account-list.component';
 import { AuthGuard } from './_helpers';
 import { DashboardComponent } from './dashboard/dashboard.component';
@@ -15,6 +14,7 @@ import { TrasanctionsListComponent } from './trasanctions-list/trasanctions-list
 import { OperationsComponent } from './operations/operations.component';
 import { CreateTransferComponent } from './create-transfer/create-transfer.component';
 import { UserDashboardComponent } from './user-dashboard/user-dashboard.component';
+import { UsersListComponent } from './users-list/users-list.component';
 const routes: Routes = [
   {
     path: '',
@@ -35,8 +35,8 @@ const routes: Routes = [
     canActivate: [AuthGuard],
   },
   {
-    path: 'contacts',
-    component: ContactListComponent,
+    path: 'users',
+    component: UsersListComponent,
     pathMatch: 'full',
     canActivate: [AuthGuard],
   },

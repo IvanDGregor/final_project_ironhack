@@ -8,11 +8,11 @@ import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 
 @Component({
-  selector: 'app-contact-list',
-  templateUrl: './contact-list.component.html',
-  styleUrls: ['./contact-list.component.scss'],
+  selector: 'app-users-list',
+  templateUrl: './users-list.component.html',
+  styleUrls: ['./users-list.component.scss']
 })
-export class ContactListComponent implements OnInit {
+export class UsersListComponent implements OnInit {
   loading = false;
   users: User[] = [];
   username: 'salesrep';
@@ -78,3 +78,4 @@ export class ContactListComponent implements OnInit {
       );
     }
 }
+

@@ -14,6 +14,7 @@ import { CreditCardListComponent } from './credit-card-list/credit-card-list.com
 import { TrasanctionsListComponent } from './trasanctions-list/trasanctions-list.component';
 import { OperationsComponent } from './operations/operations.component';
 import { CreateTransferComponent } from './create-transfer/create-transfer.component';
+import { UserDashboardComponent } from './user-dashboard/user-dashboard.component';
 const routes: Routes = [
   {
     path: '',
@@ -24,6 +25,12 @@ const routes: Routes = [
   {
     path: 'dashboard',
     component: DashboardComponent,
+    pathMatch: 'full',
+    canActivate: [AuthGuard],
+  },
+  {
+    path: 'user-dashboard',
+    component: UserDashboardComponent,
     pathMatch: 'full',
     canActivate: [AuthGuard],
   },

@@ -10,6 +10,7 @@ import { AuthenticationService } from '../_services';
 import { first } from 'rxjs/operators';
 import { environment } from 'src/environments/environment';
 import { ToastrService } from 'ngx-toastr';
+import { User } from '../_models';
 
 @Component({
   selector: 'app-login',
@@ -24,8 +25,10 @@ export class LoginComponent implements OnInit {
   invalidLogin = false;
   error = '';
   loading = false;
-  returnUrl = '/dashboard';
+  returnUrlAdmin = '/dashboard';
+  returnUrlUser = '/user-dashboard';
   disabled = false;
+  user: User;
 
   constructor(
     private toastr: ToastrService,
@@ -35,8 +38,11 @@ export class LoginComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    if (this.authenticationService.userValue) {
+    if (this.authenticationService.userValue && this.user.roles.find((role) => role.role === 'ROLE_ADMIN') !== undefined) {
       this.router.navigate(['/dashboard']);
+    }
+    else if (this.authenticationService.userValue && this.user.roles.find((role) => role.role === 'ROLE_USER') !== undefined){
+      this.router.navigate(['/user-dashboard']);
     }
     // tslint:disable-next-line: member-ordering
     const signUpButton = document.getElementById('signUp');
@@ -69,14 +75,20 @@ export class LoginComponent implements OnInit {
       this.disabled = false;
       return;
     }
-
     this.loading = true;
     this.authenticationService
       .login(this.f.username.value, this.f.password.value)
       .pipe(first())
       .subscribe(
         (data) => {
-          this.router.navigate([this.returnUrl]);
+          this.user = this.authenticationService.userValue;
+          if(this.user.roles.find((role) => role.role === 'ROLE_USER')){
+            console.log('user:' + this.user);
+            this.router.navigate([this.returnUrlUser]);
+          }
+          else if(this.user.roles.find((role) => role.role === 'ROLE_ADMIN')){
+            this.router.navigate([this.returnUrlAdmin]);
+          }
           this.toastr.success(
             '<span class="tim-icons icon-bell-55" [data-notify]="icon"></span> Welcome to <b>GLOBAL BANK</b> - app.',
             '',
@@ -105,16 +117,4 @@ export class LoginComponent implements OnInit {
         }
       );
   }
-
-  /*
-  checkLogin() {
-    if (this.loginservice.authenticate(this.username, this.password)
-    ) {
-      this.router.navigate(['']);
-      this.invalidLogin = false;
-    } else {
-      this.invalidLogin = true;
-    }
-  }
-  */
 }

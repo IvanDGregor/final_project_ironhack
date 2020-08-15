@@ -24,6 +24,7 @@ import { CreditCardListComponent } from './credit-card-list/credit-card-list.com
 import { OperationsComponent } from './operations/operations.component';
 import { CreateTransferComponent } from './create-transfer/create-transfer.component';
 import { UserSidebarComponent } from './user-sidebar/user-sidebar.component';
+import { UserDashboardComponent } from './user-dashboard/user-dashboard.component';
 
 @NgModule({
   declarations: [
@@ -44,6 +45,7 @@ import { UserSidebarComponent } from './user-sidebar/user-sidebar.component';
     OperationsComponent,
     CreateTransferComponent,
     UserSidebarComponent,
+    UserDashboardComponent,
   ],
   imports: [
     BrowserModule,

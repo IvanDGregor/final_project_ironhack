@@ -13,6 +13,8 @@ public interface CreditCardClient {
     public List<CreditCard> findAll(@RequestHeader(name = "Authorization") String token);
     @GetMapping("/credit-card/{card_id}")
     public CreditCard findById(@RequestHeader(name = "Authorization") String token, @PathVariable(name = "card_id") String card_id);
+    @GetMapping("/credit-card/user/{user_id}")
+    public List<CreditCard> findByUserId(@RequestHeader(name = "Authorization") String token, @PathVariable(name = "user_id") String user_id);
     @PostMapping("/credit-card")
     public CreditCard createCreditCard(@RequestHeader(name = "Authorization") String token, @RequestBody CreditCard creditCard);
     @PutMapping("/credit-card/{card_id}")

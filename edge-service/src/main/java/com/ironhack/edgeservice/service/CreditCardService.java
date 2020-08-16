@@ -57,6 +57,21 @@ public class CreditCardService {
     }
 
     /**
+     * This method find a Credit Card and adds in creditCardRepository's list
+     * @param userId a user id
+     * @return The Credit Card which was added in creditCardRepository's list
+     */
+    @HystrixCommand(fallbackMethod = "notFindByUserIdCreditCard")
+    public List<CreditCard> findByUserId(String userId) {
+        String creditCardToken = "Bearer " + jwtUtil.generateToken("credit-card-service");
+        return creditCardClient.findByUserId(creditCardToken, userId);
+    }
+
+    public List<CreditCard> notFindByUserIdCreditCard(String userId) {
+        throw new CreditCardClientNotWorkingException("credit-card-service not available!");
+    }
+
+    /**
      * This method creates a new Credit Card and adds in creditCardRepository's list
      * @param creditCard a account object
      * @return The Account which was added in creditCardRepository's list

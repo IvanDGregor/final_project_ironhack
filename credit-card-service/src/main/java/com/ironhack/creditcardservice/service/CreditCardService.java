@@ -65,4 +65,14 @@ public class CreditCardService {
         creditCardFound.setStatus(null);
         creditCardRepository.delete(creditCardFound);
     }
+
+    /**
+     * This method get all Credit Cards match with user id param
+     * @param userId a String value
+     * @return All Credit Cards which was found
+     * @throws CreditCardNotFoundException if there isn't any Credit Card whose user id doesn't matches userId param
+     */
+    public List<CreditCard> findByUserId(String userId) throws CreditCardNotFoundException {
+        return creditCardRepository.findByUserId(userId);
+    }
 }

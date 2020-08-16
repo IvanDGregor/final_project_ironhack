@@ -41,6 +41,16 @@ public class CreditCardController {
     public CreditCard findById(@PathVariable(name = "credit_card_id") String credit_card_id) {
         return creditCardService.findById(credit_card_id);
     }
+    /**
+     * Finds all Credit Cards by user id.
+     * @param user_id Receives all Credit Cards Id for searching by Param.
+     * @return Returns a list of Credit Cards matching the given user id.
+     */
+    @GetMapping("/credit-card/user/{user_id}")
+    @ResponseStatus(HttpStatus.OK)
+    public List<CreditCard> findByUserId(@PathVariable(name = "user_id") String user_id) {
+        return creditCardService.findByUserId(user_id);
+    }
 
     /**
      * Create new Credit Card

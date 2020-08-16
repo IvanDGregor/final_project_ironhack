@@ -66,4 +66,15 @@ public class CreditCardControllerImpl implements CreditCardControllerInterface {
         creditCardService.deleteCreditCardById(id);
     }
 
+    /**
+     * Finds all Credit Cards by user id.
+     * @param userId Receives the User Id for searching by Param.
+     * @return Returns a list of Credit cards matching the given user id.
+     */
+    @GetMapping("/credit-card/user/{userId}")
+    @ResponseStatus(HttpStatus.OK)
+    public List<CreditCard> findByUserId(@PathVariable(name = "userId") String userId) {
+        return creditCardService.findByUserId(userId);
+    }
+
 }
